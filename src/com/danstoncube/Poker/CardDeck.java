@@ -1,6 +1,7 @@
 package com.danstoncube.Poker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -73,10 +74,17 @@ public class CardDeck
 	
 	public void shuffle()
 	{		
+		
+		Collections.shuffle(this.cards);
+		//^ this is quite easier
+		
+		
+		/*		
+		-- DocteurZoidberg's way :
+		 
 		List<Card> tas1 = cards;		
 		List<Card> tas2 = new ArrayList<Card>();
-	
-		
+
 		while(tas1.size()>0)
 		{
 			Random rnd = new Random();
@@ -90,9 +98,8 @@ public class CardDeck
 			tas2.add(tmpCard);
 		}
 		
-		
-		
-		this.cards = tas2;		
+		this.cards = tas2;
+		*/
 	}
 	
 	
