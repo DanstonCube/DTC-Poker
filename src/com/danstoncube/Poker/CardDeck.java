@@ -2,6 +2,7 @@ package com.danstoncube.Poker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CardDeck
 {
@@ -75,13 +76,26 @@ public class CardDeck
 		//TODO: randomize cards order
 		
 		
-		//tempArray = 
+		List<Card> tempList = new ArrayList<Card>();
+	
+		//De 52 a 1
+		for(int i = 52; i > 0 ; i--)
+		{
+			
+			Random rnd = new Random();
+			
+			//Nombre au pif entre 0 et la taille de cards
+			int rndIndex = rnd.nextInt(cards.size()-1);
+			
+			Card tmpCard = this.cards.get(rndIndex);
+			
+			this.cards.remove(rndIndex);
+			 
+			tempList.add(tmpCard);
+		}
 		
-		//for()
 		
-		
-		
-		
+		this.cards = tempList;		
 	}
 	
 	
