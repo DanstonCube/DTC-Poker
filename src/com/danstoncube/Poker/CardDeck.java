@@ -72,30 +72,27 @@ public class CardDeck
 	
 	
 	public void shuffle()
-	{
-		//TODO: randomize cards order
-		
-		
-		List<Card> tempList = new ArrayList<Card>();
+	{		
+		List<Card> tas1 = cards;		
+		List<Card> tas2 = new ArrayList<Card>();
 	
-		//De 52 a 1
-		for(int i = 52; i > 0 ; i--)
+		
+		while(tas1.size()>0)
 		{
-			
 			Random rnd = new Random();
 			
 			//Nombre au pif entre 0 et la taille de cards
-			int rndIndex = rnd.nextInt(cards.size()-1);
+			int rndIndex = rnd.nextInt(cards.size());
 			
-			Card tmpCard = this.cards.get(rndIndex);
+			Card tmpCard = tas1.get(rndIndex);
 			
-			this.cards.remove(rndIndex);
-			 
-			tempList.add(tmpCard);
+			tas1.remove(rndIndex);
+			tas2.add(tmpCard);
 		}
 		
 		
-		this.cards = tempList;		
+		
+		this.cards = tas2;		
 	}
 	
 	
