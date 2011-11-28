@@ -25,8 +25,16 @@ public class PokerGameManager
 	
 	
 	
-	
-	
+	/// Démarre une nouvelle partie ( = table ? )
+	public PokerGame startNewGame()
+	{	
+		PokerGame newGame = new PokerGame();
+		
+		_games.put(newGame.getId(), newGame);
+		
+		return newGame;
+		
+	}
 	
 	
 	
