@@ -1,0 +1,14 @@
+name: DTC-Gares
+author: DrZoid (miko)
+main: com.danstoncube.Gares.Gares
+version: 1.0
+depend: [Spout]
+commands:
+  gares:
+    description: Permet le choix de la station
+    aliases: gares
+    usage: /gares
+permissions:
+  dtc.gares:
+    description: Autorise l'interface de choix de la station.
+    default: true
