@@ -6,10 +6,21 @@ public class Poker extends JavaPlugin
 {
 
 	public static Poker _instance = null;
+	
+	
+	
+	
+	
 	public static Poker getInstance()
 	{
 		return _instance;
 	}
+	
+	
+	
+	
+	
+	
 	
 	@Override
 	public void onDisable()
@@ -23,6 +34,10 @@ public class Poker extends JavaPlugin
 	{
 		// TODO Auto-generated method stub
 		Poker._instance = this;
+		
+		
+		//PokerGameManager();
+		
 	}
 
 }
