@@ -3,6 +3,7 @@ package com.danstoncube.Poker;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import com.danstoncube.Poker.enums.CardEnum;
 
@@ -18,6 +19,19 @@ public class CardDeck
 		}		
 		this.shuffle();
 	}
+	
+	
+	//Donne une carte au pif du ceck a un joueur (et l'enleve du deck)
+	public void giveCard(PokerPlayer player)
+	{
+		Random rnd = new Random();
+		int rndIndex = rnd.nextInt(this.cards.size());
+		
+		player.giveCard(this.cards.get(rndIndex));
+		
+		this.cards.remove(rndIndex);
+	}
+	
 	
 	
 	public void shuffle()

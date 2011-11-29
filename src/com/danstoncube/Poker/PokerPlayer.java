@@ -12,8 +12,15 @@ public class PokerPlayer
 	public int chipscount = 0;
 	
 	private boolean afk = false;
+	private boolean dealer = false;
+	private boolean smallBlind = false;
+	private boolean bigBlind = false;
+	
+	
 	
 	public CardEnum[] cards = new CardEnum[2];
+
+	public int position = -1;
 	
 	
 	PokerPlayer(SpoutPlayer player)
@@ -45,6 +52,36 @@ public class PokerPlayer
 		return this.afk;
 	}
 	
+	public boolean isDealer()
+	{
+		return this.dealer;
+	}
+	
+	public boolean isSmallBlind()
+	{
+		return this.smallBlind;
+	}
+	
+	public boolean isBigBlind()
+	{
+		return this.bigBlind;
+	}
+	
+	public void setDealer(boolean b)
+	{
+		this.dealer = b;		
+	}
+	public void setSmallBlind(boolean b)
+	{
+		this.smallBlind = b;		
+	}
+	public void setBigBlind(boolean b)
+	{
+		this.bigBlind = b;		
+	}
+	
+	
+	
 	public void setAfk(boolean afk)
 	{
 		this.afk = afk;
@@ -68,6 +105,19 @@ public class PokerPlayer
 		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), _spoutplayer, "URL DU SON", false);
 	}
 
+	
+	public int getPosition()
+	{
+		return this.position;		
+	}
+
+	public void setPosition(int i)
+	{
+		this.position  = i;		
+	}
+
+
+	
 	
 	
 	
