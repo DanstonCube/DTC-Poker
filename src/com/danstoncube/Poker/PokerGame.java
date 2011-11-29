@@ -25,7 +25,6 @@ public class PokerGame
 	public CardDeck deck = new CardDeck();
 	
 	
-	@SuppressWarnings("unused")
 	private int indexDealer = 0;
 	
 
@@ -55,11 +54,25 @@ public class PokerGame
 
 		indexDealer++;
 		
+		
+		//Nb de joueurs actifs
+		int activePlayersCount = 0;
+		
+		//compte les joueurs actifs
+		for(PokerPlayer curPlayer : players)
+		{
+			if(!curPlayer.isPlaying())
+				continue;
+			
+			activePlayersCount++;
+		}
+		
+		//Calcul des positions clefs
 		//Pour le modulo, on le fait que sur les joueurs qui sont encore dans la partie
-		int posDealer = 0; 			//TODO = indexDealer + 0 % nombreJoueursActifs 
-		int posBigBlind = 0; 		//TODO = indexDealer + 1 % nombreJoueursActifs
-		int posSmallBlind = 0; 		//TODO = indexDealer + 2 % nombreJoueursActifs
-		int posStartPlayer = 0; 	//TODO = indexDealer + 3 % nombreJoueursActifs
+		int posDealer =			indexDealer + 0 % activePlayersCount;
+		int posBigBlind = 		indexDealer + 1 % activePlayersCount;
+		int posSmallBlind = 	indexDealer + 2 % activePlayersCount;
+		int posStartPlayer =	indexDealer + 3 % activePlayersCount;
 		
 		//TODO: calcule les nouvelles positions des joueurs
 				
@@ -126,6 +139,7 @@ public class PokerGame
 	public void addPlayer(SpoutPlayer player, int position)
 	{
 		players[position] = new PokerPlayer(player);
+		players[position].setPosition(position);
 	}	
 	
 
