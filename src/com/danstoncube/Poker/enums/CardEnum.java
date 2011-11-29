@@ -69,9 +69,9 @@ public enum CardEnum
 	AS_HEARTS(14,"A", CardColorEnum.HEARTS);
 	
 	
-	public int value = 2;
-	public String display = "2";
-	public CardColorEnum color = CardColorEnum.CLUBS;
+	private int value = 2;
+	private String display = "2";
+	private CardColorEnum color = CardColorEnum.CLUBS;
 	
 	CardEnum(int value, String display, CardColorEnum color)
 	{
@@ -98,6 +98,21 @@ public enum CardEnum
 		if(value > anotherCard.value)
 			return 1;
 		return -1;
+	}
+
+
+	public int getValue() {
+		return value;
+	}
+
+
+	public String getDisplay() {
+		return display;
+	}
+
+
+	public CardColorEnum getColor() {
+		return color;
 	}
 }
 

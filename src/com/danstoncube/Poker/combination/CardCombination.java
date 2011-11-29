@@ -1,13 +1,13 @@
-package com.danstoncube.Poker.combinaisons;
+package com.danstoncube.Poker.combination;
 
 import java.util.List;
 
 import com.danstoncube.Poker.enums.CardEnum;
 
-public abstract class CardCombinaison implements Comparable<CardCombinaison> {
+public abstract class CardCombination implements Comparable<CardCombination> {
 
 	private String message;
-	private int combiValue; // Valeur de la combinaison 
+	private int typeCombination;
 	private int otherCardValue; // valeur des autres cartes
 	
 	
@@ -16,9 +16,9 @@ public abstract class CardCombinaison implements Comparable<CardCombinaison> {
 	 * @param pListCard Liste des cartes table + joueur
 	 * @return la combinaison la plus forte en main
 	 */
-	public static CardCombinaison getBestCombinaison(List<CardEnum> pListCard) {
+	public static CardCombination getBestCombinaison(List<CardEnum> pListCard) {
 		
-		CardCombinaison aCombinaison = null;
+		CardCombination aCombinaison = null;
 		//On test type par type		
 		
 		// TODO
@@ -26,13 +26,13 @@ public abstract class CardCombinaison implements Comparable<CardCombinaison> {
 	}
 
 
-	public int getCombiValue() {
-		return combiValue;
+	public int getTypeCombination() {
+		return typeCombination;
 	}
 
 
-	public void setCombiValue(int combiValue) {
-		this.combiValue = combiValue;
+	public void setTypeCombination(int typeCombination) {
+		this.typeCombination = typeCombination;
 	}
 
 
