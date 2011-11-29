@@ -3,6 +3,8 @@ package com.danstoncube.Poker;
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
+import com.danstoncube.Poker.enums.CardEnum;
+
 public class PokerPlayer
 {
 	public SpoutPlayer _spoutplayer = null;
@@ -11,7 +13,7 @@ public class PokerPlayer
 	
 	private boolean afk = false;
 	
-	public Card[] cards = new Card[2];
+	public CardEnum[] cards = new CardEnum[2];
 	
 	
 	PokerPlayer(SpoutPlayer player)
@@ -22,7 +24,7 @@ public class PokerPlayer
 	
 	
 	// Give player one card, can be called two times only
-	public void giveCard(Card card)
+	public void giveCard(CardEnum card)
 	{
 		if(cards[0]==null)
 			cards[0] = card;
