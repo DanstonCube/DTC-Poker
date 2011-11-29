@@ -119,7 +119,7 @@ public class PokerPlayer
 		this.chips = chips;
 	}
 
-	public void getChips()
+	public double getChips()
 	{
 		return this.chips;
 	}

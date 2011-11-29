@@ -5,7 +5,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class Poker extends JavaPlugin
 {
@@ -56,13 +55,10 @@ public class Poker extends JavaPlugin
 		{
 			return PokerCommandOperator.joinCommand(player, cmd, commandLabel, args);
 		}
-		else
-		{
-			return PokerCommandOperator.usageCommand(player);
-		}
 		
-		
+		PokerCommandOperator.usageCommand(player);
 		return false;
+		
 	}
 
 	
