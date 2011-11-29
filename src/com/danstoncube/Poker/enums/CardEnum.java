@@ -1,7 +1,6 @@
 package com.danstoncube.Poker.enums;
 
 
-
 public enum CardEnum
 {
 	
@@ -92,6 +91,14 @@ public enum CardEnum
 		return value < anotherCard.value;
 	}
 	
+	public int compare(CardEnum anotherCard)
+	{
+		if(value == anotherCard.value)
+			return 0;
+		if(value > anotherCard.value)
+			return 1;
+		return -1;
+	}
 }
 
 
