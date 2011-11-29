@@ -6,25 +6,35 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class PokerGame
 {
-	
+	//Min-max de joueurs pour demarrer une partie
 	public int maxplayers = 8;
 	public int minplayers = 2;
 	
+	// Montant de la cave par defaut
+	public double chipsperplayer = 1500.0;
+	
+	//Identifiant de la partie (ou table)
 	public String id = "MD5 hash of multiple variables";
 	
+	//Partie commencée ?
 	public boolean started = false;
+	
+	//Partie terminée ? 
 	public boolean finished = false;
 	
-	
+	//Tableau de joueurs, taille fixée au demarrage de la partie
 	public PokerPlayer[] players;
+	
+	//Historique des differents tours
 	public List<PokerHand> hands = new ArrayList<PokerHand>();
 	
 	//Main en cours
 	public PokerHand hand = null;
 	
+	//Paquet de carte
 	public CardDeck deck = new CardDeck();
 	
-	
+	//Compteur pour les modulos (et les blindes ???)
 	private int indexDealer = 0;
 	
 
@@ -136,10 +146,17 @@ public class PokerGame
 	}
 	
 	//Ajoute un joueur a la table
-	public void addPlayer(SpoutPlayer player, int position)
+	public void addPlayer(SpoutPlayer player, int position, double chips)
 	{
-		players[position] = new PokerPlayer(player);
-		players[position].setPosition(position);
+		PokerPlayer pplayer =  new PokerPlayer(player);
+		
+		//Fixe l'emplacement de la chaise du joueur
+		pplayer.setPosition(position);
+		
+		//Montant par defaut de jetons
+		pplayer.setChips(chips);
+		
+		players[position] = pplayer;		
 	}	
 	
 

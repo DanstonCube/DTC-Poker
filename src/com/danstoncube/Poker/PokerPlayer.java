@@ -9,20 +9,17 @@ public class PokerPlayer
 {
 	public SpoutPlayer _spoutplayer = null;
 	
-	public int chipscount = 0;
-	
-	private boolean afk = false;
-	private boolean dealer = false;
-	private boolean smallBlind = false;
-	private boolean bigBlind = false;
-	
+	private double 	chips 		= 0.0;	
+	private boolean afk 		= false;
+	private boolean dealer 		= false;
+	private boolean smallBlind 	= false;
+	private boolean bigBlind 	= false;
+	private int 	position 	= -1;
 	
 	
 	public CardEnum[] cards = new CardEnum[2];
 
-	public int position = -1;
-	
-	
+
 	PokerPlayer(SpoutPlayer player)
 	{
 		this._spoutplayer = player;	
@@ -117,6 +114,15 @@ public class PokerPlayer
 	}
 
 
+	public void setChips(double chips)
+	{
+		this.chips = chips;
+	}
+
+	public void getChips()
+	{
+		return this.chips;
+	}
 	
 	
 	

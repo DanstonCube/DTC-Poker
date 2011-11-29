@@ -21,10 +21,6 @@ public class PokerHand
 	public CardEnum[] flop = new CardEnum[5];
 
 	
-	
-	
-	
-	
 	PokerHand()
 	{
 		this.id = "A RANDOM ID"; //TODO: id unique (un tour est unique)
