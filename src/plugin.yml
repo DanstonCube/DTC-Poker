@@ -1,5 +1,5 @@
 name: DTC-Poker
-author: DrZoid&Alfred
+author: DrZoid&Alf.red
 main: com.danstoncube.Poker.Poker
 version: 1.0
 depend: [Spout]
