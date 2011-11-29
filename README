@@ -1,1 +1,22 @@
-pouet
+Pour debugguer (sous eclipse)
+
+
+ - Faire un dossier "dist" en racine du projet 
+ - y copier craftbukkit*.jar et minecraft_server.jar (dispo minecraft.net, impossible de demarrer craftbukkit dans eclipse sans)
+ - creer un dossier plugins dedans et exporter le jar du projet (sans inclure le dossier dist dans le jar) et le plugin spout (server)
+ 
+ 
+ src/
+ dist/
+ ------minecraft_server.jar
+ ------craftbukkit-1.0.0-dev-SNAPSHOT.jar
+ ------plugins/
+ ------plugins/Poker.jar
+ ------plugins/spout-dev-snapshot.jar
+ 
+ 
+ 
+Dans eclipse, faire une nouvelle config de debuggage,
+ 
+point d'entree: org.bukkit.craftbukkit.Main
+
