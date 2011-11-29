@@ -56,9 +56,10 @@ public class PokerGame
 		indexDealer++;
 		
 		//Pour le modulo, on le fait que sur les joueurs qui sont encore dans la partie
-		int posDealer = 0; 			//TODO = indexDealer % nombreJoueursActifs 
+		int posDealer = 0; 			//TODO = indexDealer + 0 % nombreJoueursActifs 
 		int posBigBlind = 0; 		//TODO = indexDealer + 1 % nombreJoueursActifs
 		int posSmallBlind = 0; 		//TODO = indexDealer + 2 % nombreJoueursActifs
+		int posStartPlayer = 0; 	//TODO = indexDealer + 3 % nombreJoueursActifs
 		
 		//TODO: calcule les nouvelles positions des joueurs
 				
@@ -105,6 +106,12 @@ public class PokerGame
 			
 			
 		}
+		
+		
+		
+		//TODO: ICI, Debut du tour, au joueur suivant la big blinde de commencer !
+		
+		
 		
 		return hand;
 	}
