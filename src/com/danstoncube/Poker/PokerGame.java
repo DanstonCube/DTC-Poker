@@ -79,10 +79,10 @@ public class PokerGame
 		
 		//Calcul des positions clefs
 		//Pour le modulo, on le fait que sur les joueurs qui sont encore dans la partie
-		int posDealer =			indexDealer + 0 % activePlayersCount;
-		int posBigBlind = 		indexDealer + 1 % activePlayersCount;
-		int posSmallBlind = 	indexDealer + 2 % activePlayersCount;
-		int posStartPlayer =	indexDealer + 3 % activePlayersCount;
+		int posDealer =			(indexDealer + 0) % activePlayersCount;
+		int posBigBlind = 		(indexDealer + 1) % activePlayersCount;
+		int posSmallBlind = 	(indexDealer + 2) % activePlayersCount;
+		int posStartPlayer =	(indexDealer + 3) % activePlayersCount;
 		
 		//TODO: calcule les nouvelles positions des joueurs
 				
@@ -126,6 +126,9 @@ public class PokerGame
 			//TODO: est de petite blinde ? -> mettre la blinde
 			
 			//TODO: est de grosse blinde ? -> mettre la blinde
+			
+			
+			//TODO: est-ce au joueur de jouer ??? si oui, notification gui
 			
 			
 		}
