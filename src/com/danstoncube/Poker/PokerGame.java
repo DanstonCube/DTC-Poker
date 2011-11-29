@@ -2,8 +2,6 @@ package com.danstoncube.Poker;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
-
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class PokerGame
@@ -18,7 +16,7 @@ public class PokerGame
 	public boolean finished = false;
 	
 	
-	public List<PokerPlayer> players = new ArrayList<PokerPlayer>();
+	public PokerPlayer[] players;
 	public List<PokerHand> hands = new ArrayList<PokerHand>();
 	
 	//Main en cours
@@ -27,51 +25,95 @@ public class PokerGame
 	public CardDeck deck = new CardDeck();
 	
 	
+	@SuppressWarnings("unused")
+	private int indexDealer = 0;
 	
+
 	
-	PokerGame()
+	PokerGame(int minplayers, int maxplayers)
 	{
+		this.minplayers = minplayers;
+		this.maxplayers = maxplayers;
+		
 		//TODO: générateur d'id aléatoire
 		this.id = "RANDOM PIF PAF POUF";
+		
+		//passage en tableau fixe
+		this.players = new PokerPlayer[maxplayers+1];
 	}
-	
-	
+
+
 	//Démarre une nouvelle main
+	@SuppressWarnings("unused")
 	public PokerHand startNewHand()
 	{
-		PokerHand newhand = new PokerHand();
+		//Histo du tour
+		hands.add(this.hand);
 		
-		ListIterator<PokerPlayer> playerIterator = players.listIterator();
+		//Mélange les cartes
+		deck.shuffle();
+
+		indexDealer++;
 		
-		PokerPlayer curPlayer = playerIterator.next();
+		//Pour le modulo, on le fait que sur les joueurs qui sont encore dans la partie
+		int posDealer = 0; 			//TODO = indexDealer + 0 % nombreJoueursActifs 
+		int posBigBlind = 0; 		//TODO = indexDealer + 1 % nombreJoueursActifs
+		int posSmallBlind = 0; 		//TODO = indexDealer + 2 % nombreJoueursActifs
+		int posStartPlayer = 0; 	//TODO = indexDealer + 3 % nombreJoueursActifs
 		
+		//TODO: calcule les nouvelles positions des joueurs
+				
+		//Démarrage d'un tout neuf
+		this.hand = new PokerHand();	
 		
 		//Boucle sur les joueurs 
-		while(curPlayer != null)
+		for(PokerPlayer curPlayer : players)
 		{
+			//Reset variables "tour"
+			curPlayer.setBigBlind(false);
+			curPlayer.setSmallBlind(false);
+			curPlayer.setDealer(false);
+			curPlayer.setPosition(-1);
+			
+			
+			//on skip les joueurs "outs"
+			if(!curPlayer.isPlaying())
+				continue;
+			
+			//TODO: recalculer player.position =
+			//TODO: recalculer player.dealer =
+			//TODO: recalculer player.smallblind = 
+			//TODO: recalculer player.bigblind = 
+			
+			/*
+			curPlayer.setBigBlind( );
+			curPlayer.setSmallBlind( );
+			curPlayer.setDealer( );
+			*/
+			
 			// "efface" les cartes du joueurs 
 			curPlayer.resetCards();
 			
-			//TODO: décaler la position du joueur
+			//donne deux cartes au joueur
+			deck.giveCard(curPlayer);
+			deck.giveCard(curPlayer);
 			
-			//TODO: verifier les blindes
 			
-			//TODO: distribuer les cartes aux joueurs
-
-			//TODO: donner deux carte au joueur
 			
-			curPlayer = playerIterator.next();
+			//TODO: est de petite blinde ? -> mettre la blinde
+			
+			//TODO: est de grosse blinde ? -> mettre la blinde
+			
+			
 		}
 		
 		
-		//TODO: hand.setDealer(player);
-		//TODO: hand.setSmallBlind(int);
-		//TODO: hand.setBigBlind(int);
 		
-		hands.add(newhand);
+		//TODO: ICI, Debut du tour, au joueur suivant la big blinde de commencer !
 		
-		this.hand = newhand;
-		return newhand;
+		
+		
+		return hand;
 	}
 	
 	//Retourne la main en cours
@@ -81,14 +123,11 @@ public class PokerGame
 	}
 	
 	//Ajoute un joueur a la table
-	public void addPlayer(SpoutPlayer player)
+	public void addPlayer(SpoutPlayer player, int position)
 	{
-		players.add(new PokerPlayer(player));
+		players[position] = new PokerPlayer(player);
 	}	
-	public void addPlayer(PokerPlayer player)
-	{
-		players.add(player);
-	}
+	
 
 
 	public String getId()
