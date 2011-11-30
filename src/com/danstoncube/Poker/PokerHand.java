@@ -18,7 +18,11 @@ public class PokerHand
 	public double bigBlind = 0.0;
 	private double pot = 0.0;
 	
-	public HandStepEnum step = HandStepEnum.BET;
+	
+	//Etape de la main en cours (bet, flop, turn, etc)
+	public PokerStep step = new PokerStep(HandStepEnum.BET,0.0,0.0);
+	
+	
 	
 	public CardEnum[] flop = new CardEnum[5];
 
@@ -55,5 +59,20 @@ public class PokerHand
 	public void setPot(double pot)
 	{
 		this.pot = pot;
+	}
+
+
+
+	public PokerStep getStep()
+	{	
+		return step;
+	}
+
+
+
+	public void setStep(PokerStep pokerStep)
+	{
+		step = pokerStep;
+		
 	}
 }

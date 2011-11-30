@@ -63,7 +63,8 @@ public class PokerGame
 	public PokerHand nextHand()
 	{
 		//Histo du tour
-		hands.add(this.hand);
+		if(this.hand!=null)
+			hands.add(this.hand);
 		
 		//Mélange les cartes
 		deck.shuffle();
@@ -165,26 +166,34 @@ public class PokerGame
 	//Passe a l'etape suivante de la main (flop / turn / river etc)
 	public void nextStep()
 	{
+		HandStepEnum stepType = hand.getStep().getType();
 		
-		if(hand.step == HandStepEnum.BET)
+		//on additionne le sous-pot avec le pot		
+		hand.addPot(hand.getStep().getPot());
+		
+		if(stepType == HandStepEnum.BET)
 		{
 			//passer a flop
+			hand.setStep(new PokerStep(HandStepEnum.FLOP));
 		}
-		else if(hand.step == HandStepEnum.FLOP)
+		else if(stepType == HandStepEnum.FLOP)
 		{
 			//passer a turn
+			hand.setStep(new PokerStep(HandStepEnum.FLOP));
 		}
-		else if(hand.step == HandStepEnum.TURN)
+		else if(stepType == HandStepEnum.TURN)
 		{
 			//passer a river
+			hand.setStep(new PokerStep(HandStepEnum.FLOP));
 		}
-		else if(hand.step == HandStepEnum.RIVER)
+		else if(stepType == HandStepEnum.RIVER)
 		{
 			//passer a show
+			hand.setStep(new PokerStep(HandStepEnum.FLOP));
 		}
-		else if(hand.step == HandStepEnum.SHOW)
+		else if(stepType == HandStepEnum.SHOW)
 		{
-			//nouvelle main
+			//nouvelle main			
 			nextHand();
 		}		
 		
@@ -198,8 +207,34 @@ public class PokerGame
 		if(chipsamount > 0)
 		{
 			player.removeChips(chipsamount);
-			hand.addPot(chipsamount);
+			hand.getStep().addPot(chipsamount);
 		}
+		
+		
+		switch(action)
+		{
+			case CHECK:
+				//TODO check
+			break;
+			
+			case CALL:
+				//TODO call
+			break;
+				
+				
+			case RAISE:
+				//TODO raise
+			break;
+				
+			case TIMEOUT:
+			case FOLD:				
+			default:
+				
+				//TODO action "coucher"
+				
+		}
+		
+		
 		
 		nextPlayer();
 	}
