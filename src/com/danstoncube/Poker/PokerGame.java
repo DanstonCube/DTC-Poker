@@ -291,6 +291,19 @@ public class PokerGame
 	{
 		return id;
 	}
+
+
+	public void end()
+	{
+		started = true;
+		finished = true;
+	}
+	
+	public void begin()
+	{
+		started = true;
+		finished = false;
+	}
 	
 	
 }

@@ -13,7 +13,7 @@ public class test {
 		 
 		 uneListe.add(CardEnum.AS_CLUBS);
 		 uneListe.add(CardEnum.KING_CLUBS);
-		 uneListe.add(CardEnum.QUEEN_CLUBS);
+		 uneListe.add(CardEnum.TWO_CLUBS);
 		 uneListe.add(CardEnum.EIGHT_DIAMONDS);
 		 uneListe.add(CardEnum.FOUR_CLUBS);
 		 uneListe.add(CardEnum.THREE_DIAMONDS);

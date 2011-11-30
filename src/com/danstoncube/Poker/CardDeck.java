@@ -32,6 +32,14 @@ public class CardDeck
 		return returnCard;
 	}
 	
+	//La meme avec une quantité
+	public void getCard(int count)
+	{
+		for(int i=0;i<=count;i++) {
+			getCard();
+		}
+	}
+		
 	//Donne une carte au pif du ceck a un joueur (et l'enleve du deck)
 	public void giveCard(PokerPlayer player)
 	{
@@ -46,8 +54,7 @@ public class CardDeck
 	//La meme avec une quantité
 	public void giveCard(PokerPlayer player, int count)
 	{
-		for(int i=0;i<=count;i++)
-		{
+		for(int i=0;i<=count;i++) {
 			giveCard(player);
 		}
 	}
