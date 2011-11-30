@@ -23,6 +23,11 @@ public abstract class CardCombination implements Comparable<CardCombination> {
 		
 		//On test type par type		
 		
+		aCombination = Combinations.getThreeOfAKindCombination(pListCard);
+		if(aCombination!=null){
+			return aCombination;
+		}
+		
 		aCombination = Combinations.getDoublePairCombination(pListCard);
 		if(aCombination!=null){
 			return aCombination;
