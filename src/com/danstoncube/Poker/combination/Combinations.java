@@ -36,4 +36,42 @@ public class Combinations {
 		return null;
 	}
 	
+	public static DoublePairCombination getDoublePairCombination(List<CardEnum> pListCards){
+		
+		// La liste doit être triée descroissante
+		int firstPair=0;
+		int secondPair=0;
+		
+		CardEnum firstCard = pListCards.get(0);
+		CardEnum secondCard = null;
+		
+		// en cas de brelan, on detecte deux pairs
+		for(int i = 1 ; i < pListCards.size();i++){
+			secondCard = pListCards.get(i);
+			if(firstCard.getValue() == secondCard.getValue()){
+				if(firstPair==0){
+					firstPair = firstCard.getValue();
+				}else if(secondPair==0){
+					secondPair = firstCard.getValue();
+					break;
+				}
+			}
+			firstCard = secondCard;
+		}
+		if(firstCard!=secondCard){
+			// on stop avant
+			DoublePairCombination aDPair = new DoublePairCombination(firstPair,secondPair);
+			for(CardEnum aCard : pListCards){
+				if(aDPair.isComplet()){
+					break;					
+				}
+				if(aCard.getValue() != firstPair && aCard.getValue()!= secondPair){
+						aDPair.setHightcardValue(aCard.getValue());					
+				}	
+			}
+			return aDPair;
+		}
+		return null;
+	}
+	
 }
