@@ -69,12 +69,35 @@ public class Combinations {
 	}
 	
 	
-	public static DoublePairCombination getThreeOfAKindCombination(List<CardEnum> pListCards){
+	public static ThreeOfAKindCombination getThreeOfAKindCombination(List<CardEnum> pListCards){
+		ThreeOfAKindCombination aCombi = null;
+		int sameCardCount = 0;
+		CardEnum firstCard = pListCards.get(0);
+		CardEnum secondCard = null;
 		
-		
-		
-		
-		return null;
+		for(int i = 1 ; i < pListCards.size();i++){
+			secondCard = pListCards.get(i);
+			if(firstCard.getValue() == secondCard.getValue()){
+				sameCardCount++;
+				if(sameCardCount == 2){
+					break;
+				}				
+			}else{
+				sameCardCount = 0;
+			}
+			firstCard = secondCard;
+		}
+		if(sameCardCount == 2){
+			// on stop avant
+			aCombi = new ThreeOfAKindCombination(firstCard.getValue());
+			for(int i = 0 ; i < pListCards.size() && !aCombi.isComplet();i++){
+				CardEnum aCard = pListCards.get(i);				
+				if(aCard.getValue() != aCombi.getValueTreeOfAKind()){
+					aCombi.addCardValue(aCard.getValue());
+				}	
+			}
+		}
+		return aCombi;
 	}
 	
 }
