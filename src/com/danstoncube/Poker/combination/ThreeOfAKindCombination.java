@@ -31,7 +31,7 @@ public class ThreeOfAKindCombination extends CardCombination {
 				return -1;
 			return 0;
 		}
-		return this.getTypeCombination().compareTo(o.getTypeCombination());		
+		return this.getTypeCombination().compareTo(o.getTypeCombination());
 	}
 	
 	public boolean isComplet()

@@ -10,10 +10,10 @@ public class test {
 		 
 		 List<CardEnum> uneListe = new ArrayList<CardEnum>();
 		 
-		 uneListe.add(CardEnum.AS_CLUBS);
+		 uneListe.add(CardEnum.KING_DIAMONDS);
 		 uneListe.add(CardEnum.KING_CLUBS);
-		 uneListe.add(CardEnum.QUEEN_CLUBS);
-		 uneListe.add(CardEnum.QUEEN_DIAMONDS);
+		 uneListe.add(CardEnum.KING_HEARTS);
+		 uneListe.add(CardEnum.KING_SPADES);
 		 uneListe.add(CardEnum.QUEEN_HEARTS);
 		 uneListe.add(CardEnum.SEVEN_CLUBS);
 		 uneListe.add(CardEnum.TWO_DIAMONDS);
@@ -21,12 +21,12 @@ public class test {
 		 CardCombination uneCombi = CardCombination.getBestCombination(uneListe);
 		 
 		 uneListe.clear();
-		 uneListe.add(CardEnum.AS_CLUBS);
-		 uneListe.add(CardEnum.JACK_CLUBS);
-		 uneListe.add(CardEnum.QUEEN_CLUBS);
-		 uneListe.add(CardEnum.QUEEN_DIAMONDS);
+		 uneListe.add(CardEnum.KING_DIAMONDS);
+		 uneListe.add(CardEnum.KING_CLUBS);
+		 uneListe.add(CardEnum.KING_HEARTS);
+		 uneListe.add(CardEnum.KING_SPADES);
 		 uneListe.add(CardEnum.QUEEN_HEARTS);
-		 uneListe.add(CardEnum.SEVEN_CLUBS);
+		 uneListe.add(CardEnum.JACK_CLUBS);
 		 uneListe.add(CardEnum.TWO_DIAMONDS);
 		 
 		 
