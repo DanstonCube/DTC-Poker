@@ -1,6 +1,7 @@
 package com.danstoncube.Poker;
 
 import com.danstoncube.Poker.enums.CardEnum;
+import com.danstoncube.Poker.enums.HandStepEnum;
 
 
 
@@ -17,6 +18,7 @@ public class PokerHand
 	public double bigBlind = 0.0;
 	private double pot = 0.0;
 	
+	public HandStepEnum step = HandStepEnum.BET;
 	
 	public CardEnum[] flop = new CardEnum[5];
 

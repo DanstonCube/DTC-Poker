@@ -32,6 +32,14 @@ public class CardDeck
 		this.cards.remove(rndIndex);
 	}
 	
+	//La meme avec une quantité
+	public void giveCard(PokerPlayer player, int count)
+	{
+		for(int i=0;i<=count;i++)
+		{
+			giveCard(player);
+		}
+	}
 	
 	
 	public void shuffle()

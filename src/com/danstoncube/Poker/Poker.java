@@ -4,7 +4,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.getspout.spoutapi.event.EventType;
 
 public class Poker extends JavaPlugin
 {
@@ -34,6 +37,13 @@ public class Poker extends JavaPlugin
 	public void onEnable()
 	{
 		Poker._instance = this;	
+		
+		//PluginManager pm = getServer().getPluginManager();
+		//pm.registerEvent(paramType, paramListener, paramPriority, paramPlugin);
+		
+		//getServer().getScheduler().scheduleAsyncDelayedTask(this, paramRunnable)
+		
+		
 	}
 
 	@Override
@@ -60,6 +70,8 @@ public class Poker extends JavaPlugin
 		return false;
 		
 	}
+	
+	
 
 	
 

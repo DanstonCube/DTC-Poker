@@ -124,6 +124,16 @@ public class PokerPlayer
 		return this.chips;
 	}
 	
+	public void addChips(double chipsamount)
+	{
+		this.chips += chipsamount;		
+	}
+
+	public void removeChips(double chipsamount)
+	{
+		this.chips -= chipsamount;		
+	}
+	
 	
 	
 	

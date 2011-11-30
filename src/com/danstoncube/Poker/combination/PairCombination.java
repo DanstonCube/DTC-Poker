@@ -1,5 +1,9 @@
 package com.danstoncube.Poker.combination;
 
+import java.util.List;
+
+import com.danstoncube.Poker.enums.CardEnum;
+
 public class PairCombination extends CardCombination {
 	
 	private int pairValue;
@@ -10,6 +14,16 @@ public class PairCombination extends CardCombination {
 	public PairCombination(){
 		setTypeCombination(1);
 	}
+	
+	//Prérempli les valeur a partir d'une liste de CardEnum
+	public PairCombination(List<CardEnum> cards){
+		super();
+		for(CardEnum card : cards)
+		{
+			this.addCardValue(card.getValue());
+		}
+	}
+	
 	
 	public int compareTo(CardCombination o) {
 		return 0;

@@ -12,17 +12,47 @@ public abstract class CardCombination implements Comparable<CardCombination> {
 	
 	
 	/**
-	 * Permet de déterminer la meilleur main d'un joueur 
+	 * Permet de dÃ©terminer la meilleur main d'un joueur 
 	 * @param pListCard Liste des cartes table + joueur
 	 * @return la combinaison la plus forte en main
 	 */
-	public static CardCombination getBestCombinaison(List<CardEnum> pListCard) {
+	public static CardCombination getBestCombination(List<CardEnum> pListCard) {
 		
-		CardCombination aCombinaison = null;
+		CardCombination aCombination = null;
+		
 		//On test type par type		
 		
-		// TODO
-		return aCombinaison;
+		
+		aCombination = Combinations.getPairCombination(pListCard);
+		if(aCombination!=null)
+			return aCombination;
+		
+		/*
+		 * 
+		 
+		 Miko: Pas tres propre :(
+		 
+		aCombination = Combinations.getPairCombination(pListCard);
+		if(aCombination!=null)
+			return aCombination;
+		
+		aCombination = Combinations.getPairCombination(pListCard);
+		if(aCombination!=null)
+			return aCombination;
+		
+		
+		aCombination = Combinations.getPairCombination(pListCard);
+		if(aCombination!=null)
+			return aCombination;
+		
+		
+		aCombination = Combinations.getPairCombination(pListCard);
+		if(aCombination!=null)
+			return aCombination;
+		*/
+		
+		
+		return null;
 	}
 
 

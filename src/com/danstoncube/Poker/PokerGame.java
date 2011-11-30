@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
+import com.danstoncube.Poker.enums.HandStepEnum;
+import com.danstoncube.Poker.enums.PlayerActionEnum;
+
 public class PokerGame
 {
 	//Min-max de joueurs pour demarrer une partie
@@ -37,6 +40,9 @@ public class PokerGame
 	//Compteur pour les modulos (et les blindes ???)
 	private int indexDealer = 0;
 	
+	//Joueur en cours
+	private PokerPlayer player = null;
+	
 
 	
 	PokerGame(int minplayers, int maxplayers)
@@ -54,7 +60,7 @@ public class PokerGame
 
 	//Démarre une nouvelle main
 	@SuppressWarnings("unused")
-	public PokerHand startNewHand()
+	public PokerHand nextHand()
 	{
 		//Histo du tour
 		hands.add(this.hand);
@@ -80,8 +86,8 @@ public class PokerGame
 		//Calcul des positions clefs
 		//Pour le modulo, on le fait que sur les joueurs qui sont encore dans la partie
 		int posDealer =			(indexDealer + 0) % activePlayersCount;
-		int posBigBlind = 		(indexDealer + 1) % activePlayersCount;
-		int posSmallBlind = 	(indexDealer + 2) % activePlayersCount;
+		int posSmallBlind = 	(indexDealer + 1) % activePlayersCount;
+		int posBigBlind = 		(indexDealer + 2) % activePlayersCount;		
 		int posStartPlayer =	(indexDealer + 3) % activePlayersCount;
 		
 		//TODO: calcule les nouvelles positions des joueurs
@@ -118,8 +124,7 @@ public class PokerGame
 			curPlayer.resetCards();
 			
 			//donne deux cartes au joueur
-			deck.giveCard(curPlayer);
-			deck.giveCard(curPlayer);
+			deck.giveCard(curPlayer,2);
 			
 			
 			
@@ -142,6 +147,70 @@ public class PokerGame
 		return hand;
 	}
 	
+	
+	//Passe au joueur suivant
+	public void nextPlayer()
+	{
+		//PokerServer.notifyPlayerEndTurn(this.player);		
+		this.player = getNextPlayer(); 
+	}
+	
+	private PokerPlayer getNextPlayer()
+	{
+		// TODO
+		return null;
+	}
+
+
+	//Passe a l'etape suivante de la main (flop / turn / river etc)
+	public void nextStep()
+	{
+		
+		if(hand.step == HandStepEnum.BET)
+		{
+			//passer a flop
+		}
+		else if(hand.step == HandStepEnum.FLOP)
+		{
+			//passer a turn
+		}
+		else if(hand.step == HandStepEnum.TURN)
+		{
+			//passer a river
+		}
+		else if(hand.step == HandStepEnum.RIVER)
+		{
+			//passer a show
+		}
+		else if(hand.step == HandStepEnum.SHOW)
+		{
+			//nouvelle main
+			nextHand();
+		}		
+		
+	}
+	
+	//Callback "action joueur"
+	public void playerPlay(PokerPlayer player, PlayerActionEnum action, double chipsamount)
+	{
+		
+		//Si chipsamount > 0, on enleve les chips au joueur et on les ajoute au pot
+		if(chipsamount > 0)
+		{
+			player.removeChips(chipsamount);
+			hand.addPot(chipsamount);
+		}
+		
+		nextPlayer();
+	}
+	
+	
+	//Retourne le joueur en cours
+	public PokerPlayer getCurrentPlayer()
+	{
+		return player;
+	}
+
 	//Retourne la main en cours
 	public PokerHand getCurrentHand()
 	{
@@ -151,7 +220,7 @@ public class PokerGame
 	//Ajoute un joueur a la table
 	public void addPlayer(SpoutPlayer player, int position, double chips)
 	{
-		PokerPlayer pplayer =  new PokerPlayer(player);
+		PokerPlayer pplayer = new PokerPlayer(player);
 		
 		//Fixe l'emplacement de la chaise du joueur
 		pplayer.setPosition(position);
