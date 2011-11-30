@@ -11,6 +11,10 @@ public class PokerHand
 	
 	public PokerPlayer winner = null;
 	public PokerPlayer dealer = null;
+	public PokerPlayer bbplayer = null;
+	public PokerPlayer sbplayer = null;
+	public PokerPlayer splayer = null;
+	
 	
 	public boolean finished = false;
 	
@@ -74,5 +78,29 @@ public class PokerHand
 	{
 		step = pokerStep;
 		
+	}
+
+	public void setDealer(PokerPlayer playerAt)
+	{
+		playerAt.setDealer(true);
+		this.dealer = playerAt;
+	}
+
+	public void setSmallBlindPlayer(PokerPlayer playerAt)
+	{
+		playerAt.setSmallBlind(true);
+		this.sbplayer = playerAt;
+	}
+
+	public void setBigBlindPlayer(PokerPlayer playerAt)
+	{
+		playerAt.setBigBlind(true);
+		this.bbplayer = playerAt;
+	}
+
+	public void setStartPlayer(PokerPlayer playerAt)
+	{
+		playerAt.setDealer(true);
+		this.splayer = playerAt;
 	}
 }

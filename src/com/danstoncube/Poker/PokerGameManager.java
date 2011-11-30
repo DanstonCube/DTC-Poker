@@ -26,10 +26,10 @@ public class PokerGameManager
 	
 	
 	/// Démarre une nouvelle partie ( = table ? )
-	public PokerGame startNewGame()
+	public PokerGame startNewGame(int minPlayers, int maxPlayers)
 	{	
 		//TODO: lire min et max players depuis la conf ou gui ?
-		PokerGame newGame = new PokerGame(2,8);
+		PokerGame newGame = new PokerGame(minPlayers,maxPlayers);
 		
 		_games.put(newGame.getId(), newGame);
 		

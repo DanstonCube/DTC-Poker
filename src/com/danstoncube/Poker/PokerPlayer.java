@@ -14,18 +14,37 @@ public class PokerPlayer
 	private boolean dealer 		= false;
 	private boolean smallBlind 	= false;
 	private boolean bigBlind 	= false;
+	private int 	index 		= 0;
 	private int 	position 	= -1;
+	private boolean playing 	= true;
 	
+	private String dgbplayername = ""; 
 	
 	public CardEnum[] cards = new CardEnum[2];
 
-
+	
+	//Pour les tests uniquement
+	public PokerPlayer(String player)
+	{
+		this.dgbplayername = player;
+		this._spoutplayer = null;	
+		resetCards();
+	}
+	
 	PokerPlayer(SpoutPlayer player)
 	{
 		this._spoutplayer = player;	
 		resetCards();
 	}
 	
+	
+	public String getPlayerName()
+	{		
+		if(_spoutplayer==null)
+			return dgbplayername;
+					
+		return _spoutplayer.getName();		
+	}
 	
 	// Give player one card, can be called two times only
 	public void giveCard(CardEnum card)
@@ -88,7 +107,7 @@ public class PokerPlayer
 	//Le joueur a t'il des cartes en main ? 
 	public boolean isPlaying()
 	{
-		return false;
+		return playing;
 	}
 
 	public void notifyPlayersCards()
@@ -132,6 +151,16 @@ public class PokerPlayer
 	public void removeChips(double chipsamount)
 	{
 		this.chips -= chipsamount;		
+	}
+
+	public void setIndex(int index)
+	{
+		this.index = index;		
+	}
+	
+	public int getIndex()
+	{
+		return this.index;
 	}
 	
 	

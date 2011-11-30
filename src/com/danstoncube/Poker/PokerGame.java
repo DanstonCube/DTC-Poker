@@ -38,17 +38,24 @@ public class PokerGame
 	public CardDeck deck = new CardDeck();
 	
 	//Compteur pour les modulos (et les blindes ???)
-	private int indexDealer = 0;
+	private int indexDealer = -1;
 	
 	//Joueur en cours
 	private PokerPlayer player = null;
 	
+	private int playercount = 0;
+	
 
+	
+	
+	
 	
 	PokerGame(int minplayers, int maxplayers)
 	{
 		this.minplayers = minplayers;
 		this.maxplayers = maxplayers;
+		this.playercount = 0;
+		
 		
 		//TODO: générateur d'id aléatoire
 		this.id = "RANDOM PIF PAF POUF";
@@ -59,18 +66,21 @@ public class PokerGame
 
 
 	//Démarre une nouvelle main
-	@SuppressWarnings("unused")
-	public PokerHand nextHand()
+	public PokerHand newHand()
 	{
 		//Histo du tour
 		if(this.hand!=null)
 			hands.add(this.hand);
 		
+		
+		//Démarrage d'une hand toute neuve
+		this.hand = new PokerHand();
+		
 		//Mélange les cartes
 		deck.shuffle();
 
-		indexDealer++;
 		
+		indexDealer++;
 		
 		//Nb de joueurs actifs
 		int activePlayersCount = 0;
@@ -78,27 +88,9 @@ public class PokerGame
 		//compte les joueurs actifs
 		for(PokerPlayer curPlayer : players)
 		{
-			if(!curPlayer.isPlaying())
+			if(curPlayer==null)
 				continue;
 			
-			activePlayersCount++;
-		}
-		
-		//Calcul des positions clefs
-		//Pour le modulo, on le fait que sur les joueurs qui sont encore dans la partie
-		int posDealer =			(indexDealer + 0) % activePlayersCount;
-		int posSmallBlind = 	(indexDealer + 1) % activePlayersCount;
-		int posBigBlind = 		(indexDealer + 2) % activePlayersCount;		
-		int posStartPlayer =	(indexDealer + 3) % activePlayersCount;
-		
-		//TODO: calcule les nouvelles positions des joueurs
-				
-		//Démarrage d'un tout neuf
-		this.hand = new PokerHand();	
-		
-		//Boucle sur les joueurs 
-		for(PokerPlayer curPlayer : players)
-		{
 			//Reset variables "tour"
 			curPlayer.setBigBlind(false);
 			curPlayer.setSmallBlind(false);
@@ -106,20 +98,40 @@ public class PokerGame
 			curPlayer.setPosition(-1);
 			
 			
-			//on skip les joueurs "outs"
 			if(!curPlayer.isPlaying())
 				continue;
 			
-			//TODO: recalculer player.position =
-			//TODO: recalculer player.dealer =
-			//TODO: recalculer player.smallblind = 
-			//TODO: recalculer player.bigblind = 
+			activePlayersCount++;
+		}
+
+		//Calcul des positions clefs
+		//Pour le modulo, on le fait que sur les joueurs qui sont encore dans la partie
+		int posDealer =			(indexDealer + 0) % activePlayersCount;
+		int posSmallBlind = 	(indexDealer + 1) % activePlayersCount;
+		int posBigBlind = 		(indexDealer + 2) % activePlayersCount;		
+		int posStartPlayer =	(indexDealer + 3) % activePlayersCount;
+		
+		
+		
+		
+		//TODO: calcule les nouvelles positions des joueurs
+				
+	
+		
+		hand.setDealer(getPlayerAt(posDealer));
+		hand.setSmallBlindPlayer(getPlayerAt(posSmallBlind));
+		hand.setBigBlindPlayer(getPlayerAt(posBigBlind));
+		hand.setStartPlayer(getPlayerAt(posStartPlayer));
+		
+		//Boucle sur les joueurs 
+		for(PokerPlayer curPlayer : players)
+		{
+			if(curPlayer==null)
+				continue;
 			
-			/*
-			curPlayer.setBigBlind( );
-			curPlayer.setSmallBlind( );
-			curPlayer.setDealer( );
-			*/
+			//on skip les joueurs "outs"
+			if(!curPlayer.isPlaying())
+				continue;
 			
 			// "efface" les cartes du joueurs 
 			curPlayer.resetCards();
@@ -127,41 +139,64 @@ public class PokerGame
 			//donne deux cartes au joueur
 			deck.giveCard(curPlayer,2);
 			
-			
-			
 			//TODO: est de petite blinde ? -> mettre la blinde
 			
 			//TODO: est de grosse blinde ? -> mettre la blinde
 			
-			
 			//TODO: est-ce au joueur de jouer ??? si oui, notification gui
-			
-			
 		}
 		
-		
-		
-		//TODO: ICI, Debut du tour, au joueur suivant la big blinde de commencer !
-		
-		
+		player = getPlayerAt(posStartPlayer);
 		
 		return hand;
 	}
 	
 	
+	private PokerPlayer getPlayerAt(int playerpos)
+	{
+		List<PokerPlayer> tmpPlayers = new ArrayList<PokerPlayer>();
+		
+		for(int i=0;i<maxplayers;i++)
+		{
+			if(players[i]!=null)
+				if(players[i].isPlaying())
+					tmpPlayers.add(players[i]);
+		}
+
+		return tmpPlayers.get(playerpos);
+	}
+
+
 	//Passe au joueur suivant
 	public void nextPlayer()
-	{
+	{		
 		//PokerServer.notifyPlayerEndTurn(this.player);		
-		this.player = getNextPlayer(); 
+		this.player = getNextPlayer();
+		//PokerServer.notifyPlayerTurn(this.player);		
+		
+		//TODO: attente réponse joueur ou timeout
 	}
+	
 	
 	private PokerPlayer getNextPlayer()
 	{
-		// TODO
+		int index = player.getIndex();
+		for(int i=0; i<maxplayers; i++)
+		{
+			index++;
+			if(index>=maxplayers)
+				index = index - maxplayers;
+			
+			if(players[index]!=null)
+				if(players[index].isPlaying())
+					return players[index]; 
+			
+			
+		}
+
 		return null;
 	}
-
+	
 
 	//Passe a l'etape suivante de la main (flop / turn / river etc)
 	public void nextStep()
@@ -201,7 +236,7 @@ public class PokerGame
 		else if(stepType == HandStepEnum.SHOW)
 		{
 			//nouvelle main			
-			nextHand();
+			newHand();
 		}		
 		
 	}
@@ -210,7 +245,7 @@ public class PokerGame
 	public void playerPlay(PokerPlayer player, PlayerActionEnum action, double chipsamount)
 	{
 		
-		//Si chipsamount > 0, on enleve les chips au joueur et on les ajoute au pot
+		//Si chipsamount > 0, on enleve les chips au joueur et on les ajoute au pot partiel
 		if(chipsamount > 0)
 		{
 			player.removeChips(chipsamount);
@@ -241,7 +276,7 @@ public class PokerGame
 		}
 		
 
-		//TODO: savoir si tout le monde a jouer ou non !
+		//TODO: savoir si tout le monde a joué ou non !
 		boolean allPlayersHavePlayed = false; //TODO
 		
 		
@@ -271,20 +306,26 @@ public class PokerGame
 		return hand;
 	}
 	
+	
+	
 	//Ajoute un joueur a la table
-	public void addPlayer(SpoutPlayer player, int position, double chips)
+	public void addPlayer(SpoutPlayer spoutPlayer, int index, double chips)
 	{
-		PokerPlayer pplayer = new PokerPlayer(player);
-		
-		//Fixe l'emplacement de la chaise du joueur
-		pplayer.setPosition(position);
-		
-		//Montant par defaut de jetons
-		pplayer.setChips(chips);
-		
-		players[position] = pplayer;		
+		PokerPlayer pokerplayer = new PokerPlayer(spoutPlayer);
+		addPlayer(pokerplayer, index, chips);	
 	}	
 	
+	public void addPlayer(PokerPlayer pokerPlayer, int index, double chips)
+	{
+		//Fixe l'emplacement de la chaise du joueur
+		pokerPlayer.setIndex(index);
+		
+		//Montant par defaut de jetons
+		pokerPlayer.setChips(chips);
+		
+		players[index] = pokerPlayer;
+		playercount++;
+	}
 
 
 	public String getId()
@@ -303,6 +344,18 @@ public class PokerGame
 	{
 		started = true;
 		finished = false;
+	}
+
+
+	public int getPlayercount()
+	{
+		return playercount;
+	}
+
+
+	public PokerPlayer getPlayer()
+	{
+		return player;
 	}
 	
 	
