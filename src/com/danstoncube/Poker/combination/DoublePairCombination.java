@@ -4,25 +4,69 @@ import com.danstoncube.Poker.enums.CombinationTypeEnum;
 
 public class DoublePairCombination extends CardCombination {
 	
-	public DoublePairCombination() {
+	private int firstPairValue;
+	private int secondPairValue;
+	private int hightcardValue;
+	
+	public DoublePairCombination(int pFirstPairValue, int pSecondPairValue) {
+		super();
 		setTypeCombination(CombinationTypeEnum.DOUBLEPAIR);
+		firstPairValue = pFirstPairValue;
+		secondPairValue = pSecondPairValue;
+		
 	}
 	
-	@Override
-	public int compareTo(CardCombination arg0)	{
-		
-		switch(arg0.getTypeCombination())
-		{
-			case DOUBLEPAIR: 		//ThreeOfAKindCombination
-				return 0;
-
-			case HIGHCARD:		
-			case PAIR:				//PairCombination
-				return 1;			
+	public int compareTo(CardCombination o) {
+		if(this.getTypeCombination().equals(o.getTypeCombination())){
+			DoublePairCombination anotherPair = (DoublePairCombination)o;
+			if(firstPairValue > anotherPair.getFirstPairValue())
+				return 1;
+			if(firstPairValue < anotherPair.getFirstPairValue())
+				return -1;
+			if(secondPairValue > anotherPair.getSecondPairValue())
+				return 1;
+			if(secondPairValue < anotherPair.getSecondPairValue())
+				return -1;
+			if(hightcardValue > anotherPair.getHightcardValue())
+				return 1;
+			if(hightcardValue < anotherPair.getHightcardValue())
+				return -1;
+			return 0;
 		}
-		
-		//Sinon c'est plus fort que nous !
-		return -1;
+		return this.getTypeCombination().compareTo(o.getTypeCombination());			
+	}
+	
+	public boolean isComplet()
+	{
+		return hightcardValue!=0 && firstPairValue != 0 && secondPairValue!=0 ;		
+	}
+
+	public int getFirstPairValue() {
+		return firstPairValue;
+	}
+
+	public void setFirstPairValue(int firstPairValue) {
+		this.firstPairValue = firstPairValue;
+	}
+
+	public int getHightcardValue() {
+		return hightcardValue;
+	}
+
+	public void setHightcardValue(int hightcardValue) {
+		this.hightcardValue = hightcardValue;
+	}
+
+	public int getSecondPairValue() {
+		return secondPairValue;
+	}
+
+	public void setSecondPairValue(int secondPairValue) {
+		this.secondPairValue = secondPairValue;
+	}
+	
+	public String getMessage(){
+		return "Double Pair : " + firstPairValue + " " +  firstPairValue + " "+  secondPairValue + " "+  secondPairValue + " "+  hightcardValue;
 	}
 
 

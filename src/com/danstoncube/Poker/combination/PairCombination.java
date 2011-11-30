@@ -14,7 +14,27 @@ public class PairCombination extends CardCombination {
 	}
 	
 	public int compareTo(CardCombination o) {
-		return 0;
+		if(this.getTypeCombination().equals(o.getTypeCombination())){
+			PairCombination anotherPair = (PairCombination)o;
+			if(pairValue > anotherPair.getPairValue())
+				return 1;
+			if(pairValue < anotherPair.getPairValue())
+				return -1;
+			if(card1 > anotherPair.getCard1())
+				return 1;
+			if(card1 < anotherPair.getCard1())
+				return -1;
+			if(card2 > anotherPair.getCard2())
+				return 1;
+			if(card2 < anotherPair.getCard2())
+				return -1;
+			if(card3 > anotherPair.getCard3())
+				return 1;
+			if(card3 < anotherPair.getCard3())
+				return -1;
+			return 0;
+		}
+		return this.getTypeCombination().compareTo(o.getTypeCombination());			
 	}
 	
 	public void setPairValue(int pPairValue){
@@ -24,6 +44,18 @@ public class PairCombination extends CardCombination {
 		return pairValue;
 	}
 	
+	public int getCard1() {
+		return card1;
+	}
+
+	public int getCard2() {
+		return card2;
+	}
+
+	public int getCard3() {
+		return card3;
+	}
+
 	public void addCardValue(int pValue){
 		if(card1==0)
 			card1 = pValue;
@@ -40,7 +72,7 @@ public class PairCombination extends CardCombination {
 	}
 	
 	public String getMessage(){
-		return "" + pairValue + " " +  pairValue + " "+  card1 + " "+  card2 + " "+  card3;
+		return "Pair : " + pairValue + " " +  pairValue + " "+  card1 + " "+  card2 + " "+  card3;
 	}
 	
 }

@@ -23,15 +23,22 @@ public abstract class CardCombination implements Comparable<CardCombination> {
 		
 		//On test type par type		
 		
+		aCombination = Combinations.getDoublePairCombination(pListCard);
+		if(aCombination!=null){
+			return aCombination;
+		}
 		
 		aCombination = Combinations.getPairCombination(pListCard);
-		if(aCombination!=null)
+		if(aCombination!=null){
 			return aCombination;
+		}
 		
 		/*
 		 * 
 		 
 		 Miko: Pas tres propre :(
+		 
+		 alf.red : Si tu as une autre idée, je suis preneur
 		 
 		aCombination = Combinations.getPairCombination(pListCard);
 		if(aCombination!=null)
@@ -85,5 +92,7 @@ public abstract class CardCombination implements Comparable<CardCombination> {
 	public void setOtherCardValue(int otherCardValue) {
 		this.otherCardValue = otherCardValue;
 	}
+	
+	public abstract boolean isComplet();
 	
 }
