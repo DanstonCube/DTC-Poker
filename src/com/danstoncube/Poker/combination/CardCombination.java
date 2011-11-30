@@ -3,11 +3,12 @@ package com.danstoncube.Poker.combination;
 import java.util.List;
 
 import com.danstoncube.Poker.enums.CardEnum;
+import com.danstoncube.Poker.enums.CombinationTypeEnum;
 
 public abstract class CardCombination implements Comparable<CardCombination> {
 
 	private String message;
-	private int typeCombination;
+	private CombinationTypeEnum typeCombination = CombinationTypeEnum.HIGHCARD;
 	private int otherCardValue; // valeur des autres cartes
 	
 	
@@ -56,12 +57,12 @@ public abstract class CardCombination implements Comparable<CardCombination> {
 	}
 
 
-	public int getTypeCombination() {
+	public CombinationTypeEnum getTypeCombination() {
 		return typeCombination;
 	}
 
 
-	public void setTypeCombination(int typeCombination) {
+	public void setTypeCombination(CombinationTypeEnum typeCombination) {
 		this.typeCombination = typeCombination;
 	}
 

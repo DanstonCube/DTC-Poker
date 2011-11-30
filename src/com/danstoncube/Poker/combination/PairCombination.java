@@ -1,5 +1,7 @@
 package com.danstoncube.Poker.combination;
 
+import com.danstoncube.Poker.enums.CombinationTypeEnum;
+
 public class PairCombination extends CardCombination {
 	
 	private int pairValue;
@@ -8,7 +10,7 @@ public class PairCombination extends CardCombination {
 	private int card3=0;
 	
 	public PairCombination(){
-		setTypeCombination(1);
+		setTypeCombination(CombinationTypeEnum.PAIR);
 	}
 	
 	public int compareTo(CardCombination o) {
