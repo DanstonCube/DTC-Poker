@@ -20,6 +20,17 @@ public class CardDeck
 		this.shuffle();
 	}
 	
+	//Prend une carte du deck et la renvoi
+	public CardEnum getCard()
+	{
+		Random rnd = new Random();
+		int rndIndex = rnd.nextInt(this.cards.size());
+		CardEnum returnCard = this.cards.get(rndIndex);
+		
+		this.cards.remove(rndIndex);
+		
+		return returnCard;
+	}
 	
 	//Donne une carte au pif du ceck a un joueur (et l'enleve du deck)
 	public void giveCard(PokerPlayer player)
@@ -71,6 +82,9 @@ public class CardDeck
 		this.cards = tas2;
 		*/
 	}
+
+
+	
 	
 	
 	

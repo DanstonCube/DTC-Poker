@@ -173,23 +173,30 @@ public class PokerGame
 		
 		if(stepType == HandStepEnum.BET)
 		{
-			//passer a flop
+			//passer a flop			
 			hand.setStep(new PokerStep(HandStepEnum.FLOP));
+			
+			//prend 3 cartes dans le deck, et les memorises dans le tableau de la main
+			hand.flop[0] = deck.getCard();
+			hand.flop[1] = deck.getCard();
+			hand.flop[2] = deck.getCard();			
 		}
 		else if(stepType == HandStepEnum.FLOP)
 		{
 			//passer a turn
-			hand.setStep(new PokerStep(HandStepEnum.FLOP));
+			hand.setStep(new PokerStep(HandStepEnum.TURN));
+			hand.flop[3] = deck.getCard();
 		}
 		else if(stepType == HandStepEnum.TURN)
 		{
 			//passer a river
-			hand.setStep(new PokerStep(HandStepEnum.FLOP));
+			hand.setStep(new PokerStep(HandStepEnum.RIVER));
+			hand.flop[4] = deck.getCard();
 		}
 		else if(stepType == HandStepEnum.RIVER)
 		{
 			//passer a show
-			hand.setStep(new PokerStep(HandStepEnum.FLOP));
+			hand.setStep(new PokerStep(HandStepEnum.SHOW));
 		}
 		else if(stepType == HandStepEnum.SHOW)
 		{
