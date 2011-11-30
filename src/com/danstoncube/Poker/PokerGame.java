@@ -220,23 +220,35 @@ public class PokerGame
 			case CALL:
 				//TODO call
 			break;
-				
-				
+								
 			case RAISE:
 				//TODO raise
 			break;
-				
+			
 			case TIMEOUT:
 			case FOLD:				
-			default:
-				
-				//TODO action "coucher"
-				
+			default:				
+				//timeout = fold
+				//TODO action "coucher"				
+			break;
 		}
 		
+
+		//TODO: savoir si tout le monde a jouer ou non !
+		boolean allPlayersHavePlayed = false; //TODO
 		
 		
-		nextPlayer();
+		//Si tout le monde a parler, étape suivante ! (distrib des cartes, ou nouvelle main si c'etait la derniere etape)
+		if(allPlayersHavePlayed)			
+		{	
+			nextStep();
+			
+		}
+		//Sinon, joueur suivant
+		else
+		{
+			nextPlayer();
+		}
 	}
 	
 	
