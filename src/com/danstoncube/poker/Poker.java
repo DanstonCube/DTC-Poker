@@ -9,7 +9,6 @@ import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.danstoncube.Gares.GaresScreenListener;
 import com.danstoncube.poker.gui.PokerGuiScreenListener;
 import com.danstoncube.poker.server.ServerCommandOperator;
 import com.danstoncube.poker.server.ServerGameManager;
