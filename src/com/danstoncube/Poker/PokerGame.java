@@ -50,7 +50,7 @@ public class PokerGame
 	
 	
 	
-	PokerGame(int minplayers, int maxplayers)
+	public PokerGame(int minplayers, int maxplayers)
 	{
 		this.minplayers = minplayers;
 		this.maxplayers = maxplayers;
@@ -66,8 +66,10 @@ public class PokerGame
 
 
 	//Démarre une nouvelle main
-	public PokerHand newHand()
+	public PokerHand nextHand()
 	{
+		started = true;
+		
 		//Histo du tour
 		if(this.hand!=null)
 			hands.add(this.hand);
@@ -97,7 +99,6 @@ public class PokerGame
 			curPlayer.setDealer(false);
 			curPlayer.setPosition(-1);
 			
-			
 			if(!curPlayer.isPlaying())
 				continue;
 			
@@ -105,23 +106,18 @@ public class PokerGame
 		}
 
 		//Calcul des positions clefs
+		
 		//Pour le modulo, on le fait que sur les joueurs qui sont encore dans la partie
 		int posDealer =			(indexDealer + 0) % activePlayersCount;
 		int posSmallBlind = 	(indexDealer + 1) % activePlayersCount;
 		int posBigBlind = 		(indexDealer + 2) % activePlayersCount;		
 		int posStartPlayer =	(indexDealer + 3) % activePlayersCount;
 		
-		
-		
-		
-		//TODO: calcule les nouvelles positions des joueurs
-				
-	
-		
 		hand.setDealer(getPlayerAt(posDealer));
 		hand.setSmallBlindPlayer(getPlayerAt(posSmallBlind));
 		hand.setBigBlindPlayer(getPlayerAt(posBigBlind));
 		hand.setStartPlayer(getPlayerAt(posStartPlayer));
+		
 		
 		//Boucle sur les joueurs 
 		for(PokerPlayer curPlayer : players)
@@ -139,14 +135,24 @@ public class PokerGame
 			//donne deux cartes au joueur
 			deck.giveCard(curPlayer,2);
 			
-			//TODO: est de petite blinde ? -> mettre la blinde
+			//est de petite blinde ? -> mettre la blinde
+			if(curPlayer.isSmallBlind())
+			{
+				curPlayer.removeChips(hand.smallBlind);
+				hand.step.addPot(hand.smallBlind);
+			}			
+			//est de grosse blinde ? -> mettre la blinde
+			else if(curPlayer.isBigBlind())
+			{
+				curPlayer.removeChips(hand.bigBlind);
+				hand.step.addPot(hand.bigBlind);
+			}
 			
-			//TODO: est de grosse blinde ? -> mettre la blinde
-			
-			//TODO: est-ce au joueur de jouer ??? si oui, notification gui
 		}
 		
 		player = getPlayerAt(posStartPlayer);
+		player.notifyTurn();
+		
 		
 		return hand;
 	}
@@ -172,7 +178,7 @@ public class PokerGame
 	{		
 		//PokerServer.notifyPlayerEndTurn(this.player);		
 		this.player = getNextPlayer();
-		//PokerServer.notifyPlayerTurn(this.player);		
+		this.player.notifyTurn();		
 		
 		//TODO: attente réponse joueur ou timeout
 	}
@@ -236,7 +242,7 @@ public class PokerGame
 		else if(stepType == HandStepEnum.SHOW)
 		{
 			//nouvelle main			
-			newHand();
+			nextHand();
 		}		
 		
 	}

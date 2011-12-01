@@ -6,19 +6,22 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.danstoncube.com.Poker.server.ServerCommandOperator;
+import com.danstoncube.com.Poker.server.ServerGameManager;
+
 public class Poker extends JavaPlugin
 {
 
 	private static Poker _instance = null;
 	
-	private PokerGameManager _gamemanager = new PokerGameManager();
+	private ServerGameManager _gamemanager = new ServerGameManager();
 
 	public static Poker getInstance()
 	{
 		return _instance;
 	}
 
-	public static PokerGameManager getGameManager()
+	public static ServerGameManager getGameManager()
 	{
 		return _instance._gamemanager;
 	}
@@ -56,14 +59,14 @@ public class Poker extends JavaPlugin
 
 		if(cmd.getName().equalsIgnoreCase("create")) 
 		{
-			return PokerCommandOperator.createCommand(player, cmd, commandLabel, args);
+			return ServerCommandOperator.createCommand(player, cmd, commandLabel, args);
 		}		
 		else if(cmd.getName().equalsIgnoreCase("join")) 
 		{
-			return PokerCommandOperator.joinCommand(player, cmd, commandLabel, args);
+			return ServerCommandOperator.joinCommand(player, cmd, commandLabel, args);
 		}
 		
-		PokerCommandOperator.usageCommand(player);
+		ServerCommandOperator.usageCommand(player);
 		return false;
 		
 	}

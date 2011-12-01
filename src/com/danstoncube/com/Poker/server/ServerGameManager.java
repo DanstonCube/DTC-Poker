@@ -1,10 +1,12 @@
-package com.danstoncube.Poker;
+package com.danstoncube.com.Poker.server;
 
 import java.util.HashMap;
 
+import com.danstoncube.Poker.PokerGame;
 
 
-public class PokerGameManager
+
+public class ServerGameManager
 {
 	private HashMap<String,PokerGame> _games = new HashMap<String,PokerGame>();
 	

@@ -1,9 +1,9 @@
-package com.danstoncube.Poker;
+package com.danstoncube.com.Poker.server;
 
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-public class PokerCommandOperator
+public class ServerCommandOperator
 {
 	
 	

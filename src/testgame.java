@@ -1,7 +1,7 @@
 import com.danstoncube.Poker.PokerGame;
-import com.danstoncube.Poker.PokerGameManager;
 import com.danstoncube.Poker.PokerPlayer;
 import com.danstoncube.Poker.enums.CardEnum;
+import com.danstoncube.com.Poker.server.ServerGameManager;
 
 
 public class testgame
@@ -9,7 +9,7 @@ public class testgame
 
 	public static void main(String[] args)
 	{
-		PokerGameManager gamemgr = new PokerGameManager();
+		ServerGameManager gamemgr = new ServerGameManager();
 		
 		//Nouvelle partie
 		PokerGame currentGame = gamemgr.startNewGame(2,8);		
@@ -20,11 +20,8 @@ public class testgame
 		currentGame.addPlayer(new PokerPlayer("tutu"), 3, 1500);
 		currentGame.addPlayer(new PokerPlayer("tata"), 6, 1500);
 		
-		//debute la partie
-		currentGame.started = true;
-		
-		//initialise une main
-		currentGame.newHand();
+		//initialise une main (debutte la partie)
+		currentGame.nextHand();
 		
 		//debug: affiche les cartes des joueurs		
 		for(PokerPlayer p : currentGame.players)

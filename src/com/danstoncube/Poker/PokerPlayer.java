@@ -5,6 +5,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.danstoncube.Poker.enums.CardEnum;
 
+@SuppressWarnings("unused")
 public class PokerPlayer
 {
 	public SpoutPlayer _spoutplayer = null;
@@ -21,7 +22,6 @@ public class PokerPlayer
 	private String dgbplayername = ""; 
 	
 	public CardEnum[] cards = new CardEnum[2];
-
 	
 	//Pour les tests uniquement
 	public PokerPlayer(String player)
@@ -115,10 +115,16 @@ public class PokerPlayer
 		//TODO: envoyer un achievement "Paire de huit" etc etc
 	}
 	
-	public void notifyPlayersTurn()
+	public void notifyTurn()
 	{
-		//TODO: envoyer un bip au joueur lui signalant que c'est a lui de jouer
-		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), _spoutplayer, "URL DU SON", false);
+
+		System.out.println("A toi de jouer " + getPlayerName());
+		
+		
+		//envoye un bip au joueur lui signalant que c'est a lui de jouer
+		//(commenté pour le debug sans spout ni bukkit)
+		
+		//SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), _spoutplayer, "URL DU SON", false);
 	}
 
 	
@@ -162,6 +168,8 @@ public class PokerPlayer
 	{
 		return this.index;
 	}
+
+	
 	
 	
 	
