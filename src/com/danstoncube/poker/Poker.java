@@ -11,7 +11,6 @@ import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.danstoncube.Gares.GaresCustomBlocks;
 import com.danstoncube.poker.gui.PokerGameCreateGuiScreenListener;
 import com.danstoncube.poker.gui.PokerPlayerGuiScreenListener;
 import com.danstoncube.poker.server.ServerCommandOperator;
@@ -56,6 +55,7 @@ public class Poker extends JavaPlugin
 
 		PluginManager pm = getServer().getPluginManager();
 		
+		//listeners des différents GUIs pour les actions sur les widgets
 		pm.registerEvent(Event.Type.CUSTOM_EVENT, new PokerPlayerGuiScreenListener(), Priority.Normal, this);
 		pm.registerEvent(Event.Type.CUSTOM_EVENT, new PokerGameCreateGuiScreenListener(), Priority.Normal, this);
 		
