@@ -15,6 +15,7 @@ import com.danstoncube.poker.gui.PokerGameCreateGuiScreenListener;
 import com.danstoncube.poker.gui.PokerPlayerGuiScreenListener;
 import com.danstoncube.poker.server.ServerCommandOperator;
 import com.danstoncube.poker.server.ServerGameManager;
+import com.danstoncube.poker.server.ServerPluginListener;
 
 public class Poker extends JavaPlugin
 {
@@ -56,8 +57,8 @@ public class Poker extends JavaPlugin
 		pm.registerEvent(Event.Type.CUSTOM_EVENT, new PokerGameCreateGuiScreenListener(), Priority.Normal, this);
 		
 		//pour être au courant de l'activation/désactivation d'autres plugins (iConomy surtout)
-        pm.registerEvent(Event.Type.PLUGIN_ENABLE, this.serverListener, Priority.Monitor, this);
-        pm.registerEvent(Event.Type.PLUGIN_DISABLE, this.serverListener, Priority.Monitor, this);
+        pm.registerEvent(Event.Type.PLUGIN_ENABLE, new ServerPluginListener(), Priority.Monitor, this);
+        pm.registerEvent(Event.Type.PLUGIN_DISABLE, new ServerPluginListener(), Priority.Monitor, this);
        
 		//getServer().getScheduler().scheduleAsyncDelayedTask(this, paramRunnable)
 	}

@@ -20,7 +20,10 @@ public class ServerPluginListener extends ServerListener {
         this.plugin = plugin;
     }
 
-   
+    public ServerPluginListener() {
+        this.plugin = Poker.getInstance();
+    }
+    
     @Override
     public void onPluginDisable(PluginDisableEvent event) 
     {        
