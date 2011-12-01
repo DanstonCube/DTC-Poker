@@ -55,6 +55,10 @@ public class Poker extends JavaPlugin
 		pm.registerEvent(Event.Type.CUSTOM_EVENT, new PokerPlayerGuiScreenListener(), Priority.Normal, this);
 		pm.registerEvent(Event.Type.CUSTOM_EVENT, new PokerGameCreateGuiScreenListener(), Priority.Normal, this);
 		
+		//pour être au courant de l'activation/désactivation d'autres plugins (iConomy surtout)
+        pm.registerEvent(Event.Type.PLUGIN_ENABLE, this.serverListener, Priority.Monitor, this);
+        pm.registerEvent(Event.Type.PLUGIN_DISABLE, this.serverListener, Priority.Monitor, this);
+       
 		//getServer().getScheduler().scheduleAsyncDelayedTask(this, paramRunnable)
 	}
 

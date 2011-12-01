@@ -2,6 +2,7 @@ package com.danstoncube.poker.server;
 
 import org.bukkit.plugin.Plugin;
 
+import com.danstoncube.poker.Messages;
 import com.danstoncube.poker.Poker;
 import com.danstoncube.tools.banque.iConomy5Balance;
 import com.danstoncube.tools.banque.iConomy6Balance;
@@ -12,12 +13,12 @@ public class ServerEconomyHandler
 {
 	public static Balance balance = null;
 	
-	public static String currencyName = "Econ.CURRENCY";
+	public static String currencyName = Messages.getString("Econ.CURRENCY"); //$NON-NLS-1$
 	
-	public final static String noConomyErr = "Econ.NOECONERR";
-	public final static String noAccountErr = "Econ.NOACCOUNTERR";
-	public final static String noFundsErr = "Econ.NOFUNDSERR";
-	public final static String oddErr = "Econ.UNKNOWNERR";
+	public final static String noConomyErr = Messages.getString("Econ.NOECONERR"); //$NON-NLS-1$
+	public final static String noAccountErr = Messages.getString("Econ.NOACCOUNTERR"); //$NON-NLS-1$
+	public final static String noFundsErr = Messages.getString("Econ.NOFUNDSERR"); //$NON-NLS-1$
+	public final static String oddErr = Messages.getString("Econ.UNKNOWNERR"); //$NON-NLS-1$
 
 	public static boolean currencyEnabled = false;
 	
@@ -33,7 +34,7 @@ public class ServerEconomyHandler
 			// Testing for iConomy6
 			if (p.getClass().getName().equals("com.iCo6.iConomy"))
 			{
-				plugin.log.info(plugin.logPrefix + "Econ.ICO6_HOOKED");
+				plugin.log.info(plugin.logPrefix + Messages.getString("Econ.ICO6_HOOKED"));
 				balance = new iConomy6Balance(plugin, (com.iCo6.iConomy)p);
 				currencyEnabled = true;
 				return;
@@ -42,7 +43,7 @@ public class ServerEconomyHandler
 			// Testing for iConomy5
 			if (p.getClass().getName().equals("com.iConomy.iConomy"))
 			{
-				plugin.log.info(plugin.logPrefix + "Econ.ICO5_HOOKED"); 
+				plugin.log.info(plugin.logPrefix + Messages.getString("Econ.ICO5_HOOKED"));
 				balance = new iConomy5Balance(plugin, (com.iConomy.iConomy)p);
 				currencyEnabled = true;
 				return;
@@ -54,7 +55,7 @@ public class ServerEconomyHandler
 		if(balance == null)
 		{
 			balance = new DummyBalance(plugin);
-			plugin.log.severe(plugin.logPrefix + "Econ.NOECONHOOKED"); //$NON-NLS-1$
+			plugin.log.severe(plugin.logPrefix + "Econ.NOECONHOOKED");
 			currencyEnabled = false;
 		}
 		
@@ -175,20 +176,20 @@ public class ServerEconomyHandler
 	public static String getEconError(int econ) 
 	{
 		if (econ == 0)
-			return "Econ.NOFUNDSERR2";
+			return Messages.getString("Econ.NOFUNDSERR2"); //$NON-NLS-1$
 		if (econ == -1)
 			return noConomyErr;
 		if (econ == -2)
-			return "Econ.NOFUNDSERR3";
+			return Messages.getString("Econ.NOFUNDSERR3"); //$NON-NLS-1$
 		if (econ == -3)
 			return oddErr;
-		return "Econ.UNKNOWNERR2";
+		return Messages.getString("Econ.UNKNOWNERR2"); //$NON-NLS-1$
 	}
 	
 	public static String formatCurrency(Double getAmount)
 	{
 		//TODO: demander le nom de la currency a iconomy
-		return "Eu" + (getAmount > 1 ? "s":"");
+		return "Eu" + (getAmount > 1 ? "s":""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 	}
 
 
@@ -201,7 +202,7 @@ public class ServerEconomyHandler
 		if(mod == 0)
 		   return String.valueOf(i/10);
 
-		return String.valueOf(i/10) + "." + mod;
+		return String.valueOf(i/10) + "." + mod; //$NON-NLS-1$
 	}
 	
 	
