@@ -4,6 +4,7 @@ import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.danstoncube.poker.enums.CardEnum;
+import com.danstoncube.poker.server.ServerCustomSounds;
 
 @SuppressWarnings("unused")
 public class PokerPlayer
@@ -120,6 +121,7 @@ public class PokerPlayer
 
 		System.out.println("A toi de jouer " + getPlayerName());
 		
+		ServerCustomSounds.playYourTurnSound(_spoutplayer);
 		
 		//envoye un bip au joueur lui signalant que c'est a lui de jouer
 		//(commenté pour le debug sans spout ni bukkit)

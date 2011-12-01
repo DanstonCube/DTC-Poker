@@ -11,9 +11,11 @@ import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.danstoncube.Gares.GaresCustomBlocks;
 import com.danstoncube.poker.gui.PokerGameCreateGuiScreenListener;
 import com.danstoncube.poker.gui.PokerPlayerGuiScreenListener;
 import com.danstoncube.poker.server.ServerCommandOperator;
+import com.danstoncube.poker.server.ServerCustomBlocks;
 import com.danstoncube.poker.server.ServerGameManager;
 import com.danstoncube.poker.server.ServerPluginListener;
 
@@ -42,6 +44,7 @@ public class Poker extends JavaPlugin
 	{
 		Poker._instance = null;
 		//TODO: finire proprement les parties en cours
+		getServer().getLogger().info("DTC - Poker désactivé !");
 	}
 
 	@Override
@@ -61,6 +64,15 @@ public class Poker extends JavaPlugin
         pm.registerEvent(Event.Type.PLUGIN_DISABLE, new ServerPluginListener(), Priority.Monitor, this);
        
 		//getServer().getScheduler().scheduleAsyncDelayedTask(this, paramRunnable)
+        
+        ServerCustomBlocks.precacheTextures();
+        ServerCustomBlocks.loadTextures();
+        ServerCustomBlocks.createBlocks();
+        ServerCustomBlocks.createRecipes();
+		
+		getServer().getLogger().info("DTC - Poker activé !");
+        
+        
 	}
 
 	@Override

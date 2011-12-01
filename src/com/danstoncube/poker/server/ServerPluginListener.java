@@ -26,7 +26,7 @@ public class ServerPluginListener extends ServerListener {
     
     @Override
     public void onPluginDisable(PluginDisableEvent event) 
-    {        
+    {
     	
     	if (ServerEconomyHandler.balance != null) 
     	{
@@ -36,24 +36,9 @@ public class ServerPluginListener extends ServerListener {
             	ServerEconomyHandler.currencyEnabled = false;
                 plugin.log.info(plugin.logPrefix + Messages.getString("Econ.UNHOOKED"));
             }
-        }    
-    	
-        /*
-       	if (ServerEconomyHandler.permissions != null) 
-       	{      		
-               if (event.getPlugin().getDescription().getName().equals("Permissions"))  //$NON-NLS-1$
-               {
-            	   ServerPermissionsHandler.permissions = null;
-            	   ServerPermissionsHandler.permissionsEnabled = false;
-                   plugin.log.info(plugin.logPrefix + Messages.getString("Perm.UNHOOKED")); //$NON-NLS-1$
-               }
-        }    
-       	*/
+        }
     	
     	
-       	//TODO: desactiver showcase et webauction ???
-       	
-
     }
 
     @Override
