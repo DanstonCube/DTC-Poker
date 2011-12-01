@@ -1,11 +1,11 @@
-package com.danstoncube.Poker;
+package com.danstoncube.poker;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import com.danstoncube.Poker.enums.CardEnum;
+import com.danstoncube.poker.enums.CardEnum;
 
 public class CardDeck
 {

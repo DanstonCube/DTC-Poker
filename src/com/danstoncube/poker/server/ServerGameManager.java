@@ -1,8 +1,8 @@
-package com.danstoncube.com.Poker.server;
+package com.danstoncube.poker.server;
 
 import java.util.HashMap;
 
-import com.danstoncube.Poker.PokerGame;
+import com.danstoncube.poker.PokerGame;
 
 
 

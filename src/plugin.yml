@@ -1,6 +1,6 @@
 name: DTC-Poker
 author: DrZoid&Alf.red
-main: com.danstoncube.Poker.Poker
+main: com.danstoncube.poker.Poker
 version: 1.0
 depend: [Spout]
 commands:
@@ -10,7 +10,7 @@ commands:
     usage: /poker
 permissions:
   dtc.poker.play:
-    description: Autorise la particpation a une partie de poker
+    description: Autorise la participation a une partie de poker
     default: true
   dtc.poker.watch:
     description: Autorise la visualisation d'une partie de poker

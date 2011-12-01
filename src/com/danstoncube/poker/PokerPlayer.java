@@ -1,9 +1,9 @@
-package com.danstoncube.Poker;
+package com.danstoncube.poker;
 
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-import com.danstoncube.Poker.enums.CardEnum;
+import com.danstoncube.poker.enums.CardEnum;
 
 @SuppressWarnings("unused")
 public class PokerPlayer

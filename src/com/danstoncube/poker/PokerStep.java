@@ -1,6 +1,6 @@
-package com.danstoncube.Poker;
+package com.danstoncube.poker;
 
-import com.danstoncube.Poker.enums.HandStepEnum;
+import com.danstoncube.poker.enums.HandStepEnum;
 
 public class PokerStep
 {

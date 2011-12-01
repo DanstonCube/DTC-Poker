@@ -1,4 +1,4 @@
-package com.danstoncube.com.Poker.server;
+package com.danstoncube.poker.server;
 
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;

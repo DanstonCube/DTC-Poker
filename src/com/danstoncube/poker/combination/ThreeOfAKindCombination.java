@@ -1,6 +1,6 @@
-package com.danstoncube.Poker.combination;
+package com.danstoncube.poker.combination;
 
-import com.danstoncube.Poker.enums.CombinationTypeEnum;
+import com.danstoncube.poker.enums.CombinationTypeEnum;
 
 public class ThreeOfAKindCombination extends CardCombination {
 	private int valueTreeOfAKind;

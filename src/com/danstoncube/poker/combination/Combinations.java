@@ -1,14 +1,14 @@
-package com.danstoncube.Poker.combination;
+package com.danstoncube.poker.combination;
 
 import java.util.List;
 
-import com.danstoncube.Poker.enums.CardEnum;
+import com.danstoncube.poker.enums.CardEnum;
 
 public class Combinations {
 
 	public static PairCombination getPairCombination(List<CardEnum> pListCards){
 		PairCombination aPair = null;
-		// La liste doit être triée descroissante
+		// La liste doit ï¿½tre triï¿½e descroissante
 		
 		CardEnum firstCard = pListCards.get(0);
 		CardEnum secondCard = null; 
@@ -35,7 +35,7 @@ public class Combinations {
 	
 	public static DoublePairCombination getDoublePairCombination(List<CardEnum> pListCards){
 		DoublePairCombination aDPair = null;
-		// La liste doit être triée descroissante
+		// La liste doit ï¿½tre triï¿½e descroissante
 		int firstPair=0;
 		int secondPair=0;
 		

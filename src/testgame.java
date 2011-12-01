@@ -1,7 +1,7 @@
-import com.danstoncube.Poker.PokerGame;
-import com.danstoncube.Poker.PokerPlayer;
-import com.danstoncube.Poker.enums.CardEnum;
-import com.danstoncube.com.Poker.server.ServerGameManager;
+import com.danstoncube.poker.PokerGame;
+import com.danstoncube.poker.PokerPlayer;
+import com.danstoncube.poker.enums.CardEnum;
+import com.danstoncube.poker.server.ServerGameManager;
 
 
 public class testgame

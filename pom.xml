@@ -14,7 +14,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.mainClass>${project.groupId}.${project.artifactId}.Poker</project.mainClass>
+		<project.mainClass>com.danstoncube.poker.Poker</project.mainClass>
 		<project.release.version>1.0.0</project.release.version>
 		<project.build.number>0</project.build.number>
 		<project.version.string>${release.version}.${build.number}</project.version.string>

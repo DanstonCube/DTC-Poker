@@ -1,4 +1,4 @@
-package com.danstoncube.Poker.enums;
+package com.danstoncube.poker.enums;
 
 
 public enum CardEnum

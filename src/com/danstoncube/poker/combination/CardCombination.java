@@ -1,9 +1,9 @@
-package com.danstoncube.Poker.combination;
+package com.danstoncube.poker.combination;
 
 import java.util.List;
 
-import com.danstoncube.Poker.enums.CardEnum;
-import com.danstoncube.Poker.enums.CombinationTypeEnum;
+import com.danstoncube.poker.enums.CardEnum;
+import com.danstoncube.poker.enums.CombinationTypeEnum;
 
 public abstract class CardCombination implements Comparable<CardCombination> {
 
@@ -48,7 +48,7 @@ public abstract class CardCombination implements Comparable<CardCombination> {
 		 
 		 Miko: Pas tres propre :(
 		 
-		 alf.red : Si tu as une autre idée, je suis preneur
+		 alf.red : Si tu as une autre idï¿½e, je suis preneur
 		 
 		aCombination = Combinations.getPairCombination(pListCard);
 		if(aCombination!=null)

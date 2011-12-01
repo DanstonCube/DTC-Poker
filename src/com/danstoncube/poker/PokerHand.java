@@ -1,7 +1,7 @@
-package com.danstoncube.Poker;
+package com.danstoncube.poker;
 
-import com.danstoncube.Poker.enums.CardEnum;
-import com.danstoncube.Poker.enums.HandStepEnum;
+import com.danstoncube.poker.enums.CardEnum;
+import com.danstoncube.poker.enums.HandStepEnum;
 
 
 

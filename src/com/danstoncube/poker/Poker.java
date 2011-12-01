@@ -1,4 +1,4 @@
-package com.danstoncube.Poker;
+package com.danstoncube.poker;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -6,8 +6,8 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.danstoncube.com.Poker.server.ServerCommandOperator;
-import com.danstoncube.com.Poker.server.ServerGameManager;
+import com.danstoncube.poker.server.ServerCommandOperator;
+import com.danstoncube.poker.server.ServerGameManager;
 
 public class Poker extends JavaPlugin
 {

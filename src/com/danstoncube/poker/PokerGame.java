@@ -1,11 +1,11 @@
-package com.danstoncube.Poker;
+package com.danstoncube.poker;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-import com.danstoncube.Poker.enums.HandStepEnum;
-import com.danstoncube.Poker.enums.PlayerActionEnum;
+import com.danstoncube.poker.enums.HandStepEnum;
+import com.danstoncube.poker.enums.PlayerActionEnum;
 
 public class PokerGame
 {
