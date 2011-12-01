@@ -19,7 +19,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 import com.danstoncube.poker.Poker;
 
 @SuppressWarnings("unused")
-public class PokerGui extends GenericPopup
+public class PokerPlayerGui extends GenericPopup
 {
 	/*
 	private final UUID b1ID;
@@ -33,7 +33,7 @@ public class PokerGui extends GenericPopup
 	SpoutPlayer player = null;
 	
 
-	PokerGui(SpoutPlayer sPlayer) 
+	PokerPlayerGui(SpoutPlayer sPlayer) 
 	{
 		player = sPlayer;
 		

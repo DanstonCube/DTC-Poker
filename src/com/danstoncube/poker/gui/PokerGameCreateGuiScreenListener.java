@@ -4,11 +4,8 @@ import org.getspout.spoutapi.event.screen.ButtonClickEvent;
 import org.getspout.spoutapi.event.screen.ScreenListener;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-
-public class PokerGuiScreenListener extends ScreenListener 
+public class PokerGameCreateGuiScreenListener extends ScreenListener 
 {
-
-
 		/**
 		 * Handles a button click event
 		 *
@@ -19,7 +16,7 @@ public class PokerGuiScreenListener extends ScreenListener
 		{
 			SpoutPlayer player = event.getPlayer();
 			
-			PokerGui popup = (PokerGui) player.getMainScreen().getActivePopup();
+			PokerPlayerGui popup = (PokerPlayerGui) player.getMainScreen().getActivePopup();
 			
 			if(popup == null)
 				return;

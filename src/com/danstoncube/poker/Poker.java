@@ -9,7 +9,8 @@ import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.danstoncube.poker.gui.PokerGuiScreenListener;
+import com.danstoncube.poker.gui.PokerGameCreateGuiScreenListener;
+import com.danstoncube.poker.gui.PokerPlayerGuiScreenListener;
 import com.danstoncube.poker.server.ServerCommandOperator;
 import com.danstoncube.poker.server.ServerGameManager;
 
@@ -42,17 +43,13 @@ public class Poker extends JavaPlugin
 	{
 		Poker._instance = this;	
 		
-		//PluginManager pm = getServer().getPluginManager();
-		//pm.registerEvent(paramType, paramListener, paramPriority, paramPlugin);
-	
+
 		PluginManager pm = getServer().getPluginManager();
 		
+		pm.registerEvent(Event.Type.CUSTOM_EVENT, new PokerPlayerGuiScreenListener(), Priority.Normal, this);
+		pm.registerEvent(Event.Type.CUSTOM_EVENT, new PokerGameCreateGuiScreenListener(), Priority.Normal, this);
 		
-		pm.registerEvent(Event.Type.CUSTOM_EVENT, new PokerGuiScreenListener(), Priority.Normal, this);
-	
 		//getServer().getScheduler().scheduleAsyncDelayedTask(this, paramRunnable)
-		
-		
 	}
 
 	@Override
