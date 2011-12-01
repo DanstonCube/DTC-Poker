@@ -1,5 +1,7 @@
 package com.danstoncube.poker;
 
+import java.util.logging.Logger;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -20,6 +22,9 @@ public class Poker extends JavaPlugin
 	private static Poker _instance = null;
 	
 	private ServerGameManager _gamemanager = new ServerGameManager();
+
+	public Logger log;
+	public String logPrefix = "[Poker] ";
 
 	public static Poker getInstance()
 	{
@@ -43,6 +48,7 @@ public class Poker extends JavaPlugin
 	{
 		Poker._instance = this;	
 		
+		log = getServer().getLogger();
 
 		PluginManager pm = getServer().getPluginManager();
 		
