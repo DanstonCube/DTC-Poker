@@ -13,7 +13,7 @@ import com.danstoncube.poker.enums.CardEnum;
 
 public class CardWidget extends GenericWidget
 {
-	private static String textureUrl = "";	
+	private static String textureUrl = "http://dl.dropbox.com/u/15091039/cards.png";
 	private static Texture texture = null;
 	
 	private CardEnum card = null;
@@ -26,6 +26,16 @@ public class CardWidget extends GenericWidget
 	public static void loadTexture()
 	{		
 		texture = new GenericTexture(textureUrl);					
+	}
+	
+	public CardWidget()
+	{
+		
+	}
+	
+	public CardWidget(CardEnum card)
+	{
+		setCard(this.card);
 	}
 	
 	public CardEnum getCard()

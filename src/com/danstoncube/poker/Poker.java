@@ -13,6 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.danstoncube.poker.gui.PokerGameCreateGuiScreenListener;
 import com.danstoncube.poker.gui.PokerPlayerGuiScreenListener;
+import com.danstoncube.poker.gui.widgets.CardWidget;
 import com.danstoncube.poker.server.ServerCommandOperator;
 import com.danstoncube.poker.server.ServerCustomBlocks;
 import com.danstoncube.poker.server.ServerGameManager;
@@ -70,6 +71,9 @@ public class Poker extends JavaPlugin
         ServerCustomBlocks.createBlocks();
         ServerCustomBlocks.createRecipes();
 		
+        CardWidget.precacheTexture();
+        CardWidget.loadTexture();
+        
 		getServer().getLogger().info("DTC - Poker activé !");
         
         
