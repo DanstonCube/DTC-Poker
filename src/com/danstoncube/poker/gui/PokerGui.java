@@ -16,7 +16,7 @@ import org.getspout.spoutapi.gui.GenericTexture;
 import org.getspout.spoutapi.gui.WidgetAnchor;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-import com.danstoncube.poker.game.Poker;
+import com.danstoncube.poker.Poker;
 
 @SuppressWarnings("unused")
 public class PokerGui extends GenericPopup
