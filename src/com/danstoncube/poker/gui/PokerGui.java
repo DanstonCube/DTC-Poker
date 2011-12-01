@@ -16,7 +16,7 @@ import org.getspout.spoutapi.gui.GenericTexture;
 import org.getspout.spoutapi.gui.WidgetAnchor;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-import com.danstoncube.poker.Poker;
+import com.danstoncube.poker.game.Poker;
 
 @SuppressWarnings("unused")
 public class PokerGui extends GenericPopup
@@ -124,7 +124,10 @@ public class PokerGui extends GenericPopup
 		player.getMainScreen().attachPopupScreen(this);
 	}
 	
-	
+	public void hide()
+	{
+		this.setVisible(false);
+	}
 	
 	
 	

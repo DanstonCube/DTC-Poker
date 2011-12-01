@@ -1,4 +1,4 @@
-package com.danstoncube.poker;
+package com.danstoncube.poker.game;
 
 import java.util.ArrayList;
 import java.util.Collections;

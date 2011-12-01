@@ -4,8 +4,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import org.bukkit.event.Event.Priority;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.danstoncube.Gares.GaresScreenListener;
+import com.danstoncube.poker.gui.PokerGuiScreenListener;
 import com.danstoncube.poker.server.ServerCommandOperator;
 import com.danstoncube.poker.server.ServerGameManager;
 
@@ -40,7 +45,12 @@ public class Poker extends JavaPlugin
 		
 		//PluginManager pm = getServer().getPluginManager();
 		//pm.registerEvent(paramType, paramListener, paramPriority, paramPlugin);
+	
+		PluginManager pm = getServer().getPluginManager();
 		
+		
+		pm.registerEvent(Event.Type.CUSTOM_EVENT, new PokerGuiScreenListener(), Priority.Normal, this);
+	
 		//getServer().getScheduler().scheduleAsyncDelayedTask(this, paramRunnable)
 		
 		

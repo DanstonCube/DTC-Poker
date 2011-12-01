@@ -1,4 +1,4 @@
-package com.danstoncube.poker.combination;
+package com.danstoncube.poker.game.combination;
 
 import com.danstoncube.poker.enums.CombinationTypeEnum;
 

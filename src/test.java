@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import com.danstoncube.poker.combination.CardCombination;
 import com.danstoncube.poker.enums.CardEnum;
+import com.danstoncube.poker.game.combination.CardCombination;
 
 
 public class test {

@@ -1,4 +1,4 @@
-package com.danstoncube.poker;
+package com.danstoncube.poker.game;
 
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.player.SpoutPlayer;

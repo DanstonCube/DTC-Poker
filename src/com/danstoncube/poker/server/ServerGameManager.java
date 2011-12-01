@@ -2,7 +2,7 @@ package com.danstoncube.poker.server;
 
 import java.util.HashMap;
 
-import com.danstoncube.poker.PokerGame;
+import com.danstoncube.poker.game.PokerGame;
 
 
 

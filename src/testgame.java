@@ -1,6 +1,6 @@
-import com.danstoncube.poker.PokerGame;
-import com.danstoncube.poker.PokerPlayer;
 import com.danstoncube.poker.enums.CardEnum;
+import com.danstoncube.poker.game.PokerGame;
+import com.danstoncube.poker.game.PokerPlayer;
 import com.danstoncube.poker.server.ServerGameManager;
 
 
