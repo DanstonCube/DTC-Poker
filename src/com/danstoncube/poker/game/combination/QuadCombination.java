@@ -1,5 +1,8 @@
 package com.danstoncube.poker.game.combination;
 
+import java.util.List;
+
+import com.danstoncube.poker.enums.CardEnum;
 import com.danstoncube.poker.enums.CombinationTypeEnum;
 
 public class QuadCombination extends CardCombination {
@@ -52,6 +55,24 @@ public class QuadCombination extends CardCombination {
 	
 	public String getMessage(){
 		return "Quad : " + quadValue + " " +  quadValue + " "+  quadValue + " "+  quadValue + " "+  hightCardValue;
+	}
+	
+	public static QuadCombination getQuadCombination(List<CardEnum> pListCards){
+		QuadCombination aCombi = null;
+		if(pListCards.get(0).getValue() == pListCards.get(3).getValue()){
+			aCombi = new QuadCombination(pListCards.get(0).getValue());
+			aCombi.setHightCardValue(pListCards.get(4).getValue());
+		}
+		else if(
+			   pListCards.get(1).getValue() == pListCards.get(4).getValue()
+			|| pListCards.get(2).getValue() == pListCards.get(5).getValue()
+			|| pListCards.get(3).getValue() == pListCards.get(6).getValue()
+				)
+		{	
+			aCombi = new QuadCombination(pListCards.get(4).getValue());
+			aCombi.setHightCardValue(pListCards.get(0).getValue());			
+		}
+		return aCombi;
 	}
 
 }
