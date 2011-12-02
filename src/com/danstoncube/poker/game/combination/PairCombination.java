@@ -1,5 +1,8 @@
 package com.danstoncube.poker.game.combination;
 
+import java.util.List;
+
+import com.danstoncube.poker.enums.CardEnum;
 import com.danstoncube.poker.enums.CombinationTypeEnum;
 
 public class PairCombination extends CardCombination {
@@ -75,4 +78,28 @@ public class PairCombination extends CardCombination {
 		return "Pair : " + pairValue + " " +  pairValue + " "+  card1 + " "+  card2 + " "+  card3;
 	}
 	
+	public static PairCombination getPairCombination(List<CardEnum> pListCards){
+		PairCombination aPair = null;
+		CardEnum firstCard = pListCards.get(0);
+		CardEnum secondCard = null; 
+		for(int i = 1 ; i < pListCards.size();i++){
+			secondCard = pListCards.get(i);
+			if(firstCard.getValue() == secondCard.getValue()){
+				break;
+			}
+			firstCard = secondCard;
+		}
+		if(firstCard!=secondCard){
+			// on stop avant
+			aPair = new PairCombination();
+			aPair.setPairValue(firstCard.getValue());
+			for(int i = 0 ; i < pListCards.size() && !aPair.isComplet();i++){
+				if(pListCards.get(i).getValue() != firstCard.getValue()){
+					aPair.addCardValue(pListCards.get(i).getValue());
+				}
+			}
+		}
+		
+		return aPair;
+	}
 }

@@ -1,5 +1,8 @@
 package com.danstoncube.poker.game.combination;
 
+import java.util.List;
+
+import com.danstoncube.poker.enums.CardEnum;
 import com.danstoncube.poker.enums.CombinationTypeEnum;
 
 public class DoublePairCombination extends CardCombination {
@@ -33,7 +36,7 @@ public class DoublePairCombination extends CardCombination {
 				return -1;
 			return 0;
 		}
-		return this.getTypeCombination().compareTo(o.getTypeCombination());			
+		return this.getTypeCombination().compareTo(o.getTypeCombination());
 	}
 	
 	public boolean isComplet()
@@ -67,6 +70,40 @@ public class DoublePairCombination extends CardCombination {
 	
 	public String getMessage(){
 		return "Double Pair : " + firstPairValue + " " +  firstPairValue + " "+  secondPairValue + " "+  secondPairValue + " "+  hightcardValue;
+	}
+	
+	public static DoublePairCombination getDoublePairCombination(List<CardEnum> pListCards){
+		DoublePairCombination aDPair = null;
+		int firstPair=0;
+		int secondPair=0;
+		
+		CardEnum firstCard = pListCards.get(0);
+		CardEnum secondCard = null;
+		
+		// en cas de brelan, on detecte deux pairs
+		for(int i = 1 ; i < pListCards.size();i++){
+			secondCard = pListCards.get(i);
+			if(firstCard.getValue() == secondCard.getValue()){
+				if(firstPair==0){
+					firstPair = firstCard.getValue();
+				}else if(secondPair==0){
+					secondPair = firstCard.getValue();
+					break;
+				}
+			}
+			firstCard = secondCard;
+		}
+		if(firstCard!=secondCard){
+			// on stop avant
+			aDPair = new DoublePairCombination(firstPair,secondPair);
+			for(int i = 0 ; i < pListCards.size() && !aDPair.isComplet();i++){
+				CardEnum aCard = pListCards.get(i);				
+				if(aCard.getValue() != firstPair && aCard.getValue()!= secondPair){
+						aDPair.setHightcardValue(aCard.getValue());					
+				}	
+			}
+		}
+		return aDPair;
 	}
 
 
