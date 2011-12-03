@@ -16,25 +16,20 @@ import org.getspout.spoutapi.gui.GenericTexture;
 import org.getspout.spoutapi.gui.WidgetAnchor;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-import com.danstoncube.poker.Poker;
+import com.danstoncube.poker.enums.CardEnum;
 import com.danstoncube.poker.gui.widgets.CardWidget;
+import com.danstoncube.poker.plugin.Poker;
 
 @SuppressWarnings("unused")
 public class PokerPlayerGui extends GenericPopup
 {
-	/*
-	private final UUID b1ID;
-	private final UUID b2ID;
-	private final UUID b3ID;
-	private final UUID b4ID;
-	*/
 	
 	final Plugin poker = Poker.getInstance();
 	
 	SpoutPlayer player = null;
 	
 
-	PokerPlayerGui(SpoutPlayer sPlayer) 
+	public PokerPlayerGui(SpoutPlayer sPlayer) 
 	{
 		player = sPlayer;
 		
@@ -43,74 +38,31 @@ public class PokerPlayerGui extends GenericPopup
 		int widthScale = sPlayer.getMainScreen().getWidth() / 100;
 		int heightScale = sPlayer.getMainScreen().getHeight() / 100;
 
-		box.setLayout(ContainerType.VERTICAL);
-		//box.setAnchor(WidgetAnchor.CENTER_CENTER);
-		box.setWidth(widthScale * 50).setHeight(heightScale * 50);
-		//box.shiftYPos(-(box.getHeight()/2));
-		//box.shiftXPos(-(box.getWidth()/2));
+		
+		box.setLayout(ContainerType.HORIZONTAL);
+		box.setAnchor(WidgetAnchor.TOP_LEFT);
+		
+		//Fullscreen
+		box.setWidth(widthScale * 100).setHeight(heightScale * 100);
+
 
 		
-		//TODO: calculer positions des cartes du flop
+		//Add 3 sample card widget
 		
-		CardWidget flopCard1 = new CardWidget();
-		flopCard1.setX(0);
-		flopCard1.setY(0);
+		CardWidget flopCard1 = new CardWidget(CardEnum.AS_SPADES);
+		CardWidget flopCard2 = new CardWidget(CardEnum.KING_HEARTS);
+		CardWidget flopCard3 = new CardWidget(CardEnum.FIVE_CLUBS);
 		
-		CardWidget flopCard2 = new CardWidget();
-		flopCard2.setX(0);
-		flopCard2.setY(0);
+
+		box.addChildren(flopCard1,flopCard2,flopCard3);
 		
-		CardWidget flopCard3 = new CardWidget();
-		flopCard3.setX(0);
-		flopCard3.setY(0);
-		
-		CardWidget flopCard4 = new CardWidget();
-		flopCard4.setX(0);
-		flopCard4.setY(0);
-		
-		CardWidget flopCard5 = new CardWidget();
-		flopCard5.setX(0);
-		flopCard5.setY(0);
-		
-		
-		box.addChildren(flopCard1,flopCard2,flopCard3,flopCard4,flopCard5);
-		
-		this.setTransparent(true);
 		
 		this.attachWidget(poker, box);
 		
-		this.show();
-	}
-
-	/*
-	public boolean isB1(Button button) {
-		return button.getId().equals(b1ID);
-	}
-
-	public boolean isB2(Button button) {
-		return button.getId().equals(b2ID);
-	}
-	
-	public boolean isB3(Button button) {
-		return button.getId().equals(b3ID);
-	}
-
-	public boolean isB4(Button button) {
-		return button.getId().equals(b4ID);
-	}
-	*/
-	
-	
-	public void show()
-	{
 		player.getMainScreen().attachPopupScreen(this);
 	}
-	
-	public void hide()
-	{
-		this.setVisible(false);
-	}
-	
+
+
 	
 	
 	

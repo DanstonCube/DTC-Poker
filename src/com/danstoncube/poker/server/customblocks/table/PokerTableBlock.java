@@ -15,7 +15,7 @@ import org.getspout.spoutapi.material.block.GenericCustomBlock;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 
-import com.danstoncube.poker.Poker;
+import com.danstoncube.poker.plugin.Poker;
 
 public class PokerTableBlock extends GenericCustomBlock
 {

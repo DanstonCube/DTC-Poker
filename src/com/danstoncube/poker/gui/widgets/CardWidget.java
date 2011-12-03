@@ -1,70 +1,56 @@
 package com.danstoncube.poker.gui.widgets;
 
-import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.gui.GenericTexture;
-import org.getspout.spoutapi.gui.GenericWidget;
-import org.getspout.spoutapi.gui.Texture;
-import org.getspout.spoutapi.gui.WidgetType;
-
-import com.danstoncube.poker.Poker;
+import org.getspout.spoutapi.gui.WidgetAnchor;
 import com.danstoncube.poker.enums.CardEnum;
 
 
 
-public class CardWidget extends GenericWidget
+public class CardWidget extends GenericTexture
 {
+	//Whole cards texture
 	private static String textureUrl = "http://dl.dropbox.com/u/15091039/cards.png";
-	private static Texture texture = null;
 	
 	private CardEnum card = null;
+
+	//Display card or card back ?
+	private boolean show = true;
 	
-	public static void precacheTexture()
+	public CardWidget(CardEnum cardEnum)
 	{
-		SpoutManager.getFileManager().addToPreLoginCache(Poker.getInstance(), textureUrl);		
-	}
-	
-	public static void loadTexture()
-	{		
-		texture = new GenericTexture(textureUrl);					
-	}
-	
-	public CardWidget()
-	{
+		super(textureUrl);
 		
+		//Card width
+		int cardWidth = 79;
+		
+		//Card height
+		int cardHeight = 123;
+
+		//Screenshots provided are with and without this setAnchor !
+		this.setAnchor(WidgetAnchor.TOP_LEFT);
+				
+		this.setWidth(cardWidth);
+		this.setHeight(cardHeight);
+		this.setLeft(0);
+		this.setTop(0);		
+		
+		//Should display first card of the cards texture !
 	}
 	
-	public CardWidget(CardEnum card)
-	{
-		setCard(this.card);
-	}
 	
 	public CardEnum getCard()
 	{
 		return this.card;
 	}
 	
-	public void setCard(CardEnum card)
+	public boolean getShow()
 	{
-		this.card = card;
-	}
-	
-	//Renvoi la texture de la partie correspondant à la carte
-	public Texture getTexture()
-	{
-		int textureindex = 0;
-
-		return texture;
-		//SubTexture subTex = texture.getSubTexture(textureindex);
-		//return subTex;
+		return this.show;
 	}
 
-	@Override
-	public WidgetType getType()
+	public void setShow(boolean show)
 	{
-		return WidgetType.Texture;
+		this.show = show;
 	}
-	
-	
-	
 	
 }

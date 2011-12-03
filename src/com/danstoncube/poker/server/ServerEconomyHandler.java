@@ -2,8 +2,8 @@ package com.danstoncube.poker.server;
 
 import org.bukkit.plugin.Plugin;
 
-import com.danstoncube.poker.Messages;
-import com.danstoncube.poker.Poker;
+import com.danstoncube.poker.plugin.Messages;
+import com.danstoncube.poker.plugin.Poker;
 import com.danstoncube.tools.banque.iConomy5Balance;
 import com.danstoncube.tools.banque.iConomy6Balance;
 import com.danstoncube.tools.banque.DummyBalance;

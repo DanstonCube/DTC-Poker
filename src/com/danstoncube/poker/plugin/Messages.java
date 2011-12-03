@@ -1,4 +1,4 @@
-package com.danstoncube.poker;
+package com.danstoncube.poker.plugin;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;

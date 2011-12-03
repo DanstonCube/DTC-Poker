@@ -5,8 +5,8 @@ import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.event.server.ServerListener;
 
-import com.danstoncube.poker.Messages;
-import com.danstoncube.poker.Poker;
+import com.danstoncube.poker.plugin.Messages;
+import com.danstoncube.poker.plugin.Poker;
 import com.danstoncube.tools.banque.DummyBalance;
 
 

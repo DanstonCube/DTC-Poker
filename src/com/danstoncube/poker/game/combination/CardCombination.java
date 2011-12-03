@@ -1,8 +1,5 @@
 package com.danstoncube.poker.game.combination;
 
-import java.util.List;
-
-import com.danstoncube.poker.enums.CardEnum;
 import com.danstoncube.poker.enums.CombinationTypeEnum;
 
 public abstract class CardCombination implements Comparable<CardCombination> {

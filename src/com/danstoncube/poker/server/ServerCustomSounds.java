@@ -3,7 +3,7 @@ package com.danstoncube.poker.server;
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-import com.danstoncube.poker.Poker;
+import com.danstoncube.poker.plugin.Poker;
 
 public class ServerCustomSounds
 {

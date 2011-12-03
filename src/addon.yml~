@@ -1,0 +1,7 @@
+name: DTC-Poker
+version: 1.0
+description: Partie Client de DTC-Poker
+authors: [DrZoid, Alfred]
+website: http://www.danstoncube.com
+main: com.danstoncube.poker.addon.Poker
+mode: BOTH

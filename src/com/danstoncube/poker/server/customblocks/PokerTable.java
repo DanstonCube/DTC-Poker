@@ -1,7 +1,8 @@
 package com.danstoncube.poker.server.customblocks;
 
 import org.getspout.spoutapi.block.design.Texture;
-import com.danstoncube.poker.Poker;
+
+import com.danstoncube.poker.plugin.Poker;
 
 public class PokerTable
 {

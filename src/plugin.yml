@@ -1,9 +1,13 @@
 name: DTC-Poker
-author: DrZoid&Alf.red
-main: com.danstoncube.poker.Poker
+authors: [DrZoid, Alfred]
+main: com.danstoncube.poker.plugin.Poker
 version: 1.0
 depend: [Spout]
 commands:
+  pokerjoin:
+    description: Rejoindre une partie
+    aliases: pokerjoin, join
+    usage: /pokerjoin
   poker:
     description: Affiche la liste des commandes
     aliases: poker

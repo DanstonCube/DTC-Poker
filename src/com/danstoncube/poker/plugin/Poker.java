@@ -1,4 +1,4 @@
-package com.danstoncube.poker;
+package com.danstoncube.poker.plugin;
 
 import java.util.logging.Logger;
 
@@ -13,7 +13,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.danstoncube.poker.gui.PokerGameCreateGuiScreenListener;
 import com.danstoncube.poker.gui.PokerPlayerGuiScreenListener;
-import com.danstoncube.poker.gui.widgets.CardWidget;
 import com.danstoncube.poker.server.ServerCommandOperator;
 import com.danstoncube.poker.server.ServerCustomBlocks;
 import com.danstoncube.poker.server.ServerGameManager;
@@ -71,10 +70,10 @@ public class Poker extends JavaPlugin
         ServerCustomBlocks.createBlocks();
         ServerCustomBlocks.createRecipes();
 		
-        CardWidget.precacheTexture();
-        CardWidget.loadTexture();
+        //CardWidget.precacheTexture();
+      
         
-		getServer().getLogger().info("DTC - Poker activé !");
+		getServer().getLogger().info(logPrefix + "activé !");
         
         
 	}
@@ -90,11 +89,11 @@ public class Poker extends JavaPlugin
 		Player player = ((Player) sender);
 		
 
-		if(cmd.getName().equalsIgnoreCase("create")) 
+		if(cmd.getName().equalsIgnoreCase("create") || cmd.getName().equalsIgnoreCase("pokercreate")) 
 		{
 			return ServerCommandOperator.createCommand(player, cmd, commandLabel, args);
 		}		
-		else if(cmd.getName().equalsIgnoreCase("join")) 
+		else if(cmd.getName().equalsIgnoreCase("join") || cmd.getName().equalsIgnoreCase("pokerjoin")) 
 		{
 			return ServerCommandOperator.joinCommand(player, cmd, commandLabel, args);
 		}

@@ -1,7 +1,8 @@
 package com.danstoncube.poker.server.customblocks.table;
 
 import org.getspout.spoutapi.block.design.GenericCubeBlockDesign;
-import com.danstoncube.poker.Poker;
+
+import com.danstoncube.poker.plugin.Poker;
 import com.danstoncube.poker.server.customblocks.PokerTable;
 
 
