@@ -1,5 +1,6 @@
 package com.danstoncube.poker.game.combination;
 
+
 import java.util.List;
 
 import com.danstoncube.poker.enums.CardEnum;
@@ -38,7 +39,7 @@ public class StraightCombination extends CardCombination {
 		int highCard = 0;
 		int countCard = 1;
 		// Sortie de boucle plus complexe : sort si la carte suivante ne fait pas parti de la suite
-		// Permet de savoir si suite à l'AS
+		// Permet de savoir si suite ï¿½ l'AS
 		for(int i = 0; i < pListCards.size();i++){
 			if(pListCards.get(i).getValue() == highCard-countCard ){
 				countCard++;				
