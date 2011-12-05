@@ -1,4 +1,4 @@
-package com.danstoncube.poker.gui;
+package com.danstoncube.poker.plugin.gui;
 
 import java.util.UUID;
 
@@ -17,8 +17,8 @@ import org.getspout.spoutapi.gui.WidgetAnchor;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.danstoncube.poker.enums.CardEnum;
-import com.danstoncube.poker.gui.widgets.CardWidget;
 import com.danstoncube.poker.plugin.Poker;
+import com.danstoncube.poker.plugin.gui.widgets.CardWidget;
 
 @SuppressWarnings("unused")
 public class PokerPlayerGui extends GenericPopup

@@ -14,8 +14,17 @@ public class CardWidget extends GenericTexture
 	public CardWidget(CardEnum cardEnum)
 	{
 		super(textureUrl);
-		this.setWidth(10);
-		this.setHeight(10);
+	
+		int cardWidth = (int) (79);
+		int cardHeight = (int) (123);
+		
+		this.setUrl(textureUrl);
+		
+		this.setWidth(cardWidth);
+		this.setHeight(cardHeight);
+		this.setLeft(0);
+		this.setTop(0);
+
 	}
 	
 }

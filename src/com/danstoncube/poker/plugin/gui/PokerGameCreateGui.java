@@ -1,4 +1,4 @@
-package com.danstoncube.poker.gui;
+package com.danstoncube.poker.plugin.gui;
 
 import java.util.UUID;
 

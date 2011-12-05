@@ -4,7 +4,6 @@ import org.spoutcraft.spoutcraftapi.Spoutcraft;
 import org.spoutcraft.spoutcraftapi.gui.Container;
 import org.spoutcraft.spoutcraftapi.gui.ContainerType;
 import org.spoutcraft.spoutcraftapi.gui.GenericContainer;
-import org.spoutcraft.spoutcraftapi.gui.GenericTexture;
 import org.spoutcraft.spoutcraftapi.gui.WidgetAnchor;
 
 import com.danstoncube.poker.enums.CardEnum;
@@ -36,13 +35,13 @@ public class PokerPlayerGui
 		
 		/* add a test texture */
 		
-		GenericTexture testTexture = new GenericTexture(CardWidget.textureUrl);
+		//GenericTexture testTexture = new GenericTexture(CardWidget.textureUrl);
 		
-		testTexture.setWidth(20).setHeight(20).setX(20).setY(20);
+		//testTexture.setWidth(20).setHeight(20).setX(20).setY(20);
 		
 		
 		//add children
-		testContainer.addChildren(label,testTexture, flopCard1,flopCard2,flopCard3);
+		testContainer.addChildren(label, flopCard1,flopCard2,flopCard3);
 
 	 	
 		Spoutcraft.getActivePlayer().getMainScreen().attachWidget(Poker.getAddon(), testContainer);

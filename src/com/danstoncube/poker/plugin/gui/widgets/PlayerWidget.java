@@ -1,4 +1,4 @@
-package com.danstoncube.poker.gui.widgets;
+package com.danstoncube.poker.plugin.gui.widgets;
 
 import org.getspout.spoutapi.gui.GenericWidget;
 import org.getspout.spoutapi.gui.WidgetType;

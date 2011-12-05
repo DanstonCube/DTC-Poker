@@ -39,6 +39,9 @@ public class Poker extends JavaAddon
 		Spoutcraft.getLogger().info("POKER - activé");
 		new PokerPlayerGui();
 		
+		
+		//Player p = null;
+		
 		//Spoutcraft.getAddonManager().
 		
 		//Spoutcraft.getKeyBindingManager().registerControl(new KeyBinding(Keyboard.KEY_P))
