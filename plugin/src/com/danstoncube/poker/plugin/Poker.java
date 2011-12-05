@@ -10,11 +10,9 @@ import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.danstoncube.poker.plugin.gui.PokerGameCreateGuiScreenListener;
 import com.danstoncube.poker.plugin.gui.PokerPlayerGuiScreenListener;
-import com.danstoncube.poker.plugin.packets.PlayersTurnPacket;
 import com.danstoncube.poker.server.ServerCommandOperator;
 import com.danstoncube.poker.server.ServerCustomBlocks;
 import com.danstoncube.poker.server.ServerGameManager;

@@ -2,7 +2,6 @@ package com.danstoncube.poker.game;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.danstoncube.poker.enums.HandStepEnum;
 import com.danstoncube.poker.enums.PlayerActionEnum;
@@ -314,12 +313,7 @@ public class PokerGame
 	
 	
 	
-	//Ajoute un joueur a la table
-	public void addPlayer(SpoutPlayer spoutPlayer, int index, double chips)
-	{
-		PokerPlayer pokerplayer = new PokerPlayer(spoutPlayer);
-		addPlayer(pokerplayer, index, chips);	
-	}	
+	
 	
 	public void addPlayer(PokerPlayer pokerPlayer, int index, double chips)
 	{

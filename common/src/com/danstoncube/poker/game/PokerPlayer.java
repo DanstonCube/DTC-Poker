@@ -1,16 +1,13 @@
 package com.danstoncube.poker.game;
 
-import org.getspout.spoutapi.SpoutManager;
-import org.getspout.spoutapi.player.SpoutPlayer;
-
 import com.danstoncube.poker.enums.CardEnum;
-import com.danstoncube.poker.server.ServerCustomSounds;
 
-@SuppressWarnings("unused")
+
 public class PokerPlayer
 {
-	public SpoutPlayer _spoutplayer = null;
+	//public SpoutPlayer _spoutplayer = null;
 	
+	private String  name = "";
 	private double 	chips 		= 0.0;	
 	private boolean afk 		= false;
 	private boolean dealer 		= false;
@@ -20,32 +17,23 @@ public class PokerPlayer
 	private int 	position 	= -1;
 	private boolean playing 	= true;
 	
-	private String dgbplayername = ""; 
+
 	
 	public CardEnum[] cards = new CardEnum[2];
 	
 	//Pour les tests uniquement
-	public PokerPlayer(String player)
+	public PokerPlayer(String playerName)
 	{
-		this.dgbplayername = player;
-		this._spoutplayer = null;	
-		resetCards();
-	}
-	
-	PokerPlayer(SpoutPlayer player)
-	{
-		this._spoutplayer = player;	
+		this.name = playerName;
 		resetCards();
 	}
 	
 	
 	public String getPlayerName()
 	{		
-		if(_spoutplayer==null)
-			return dgbplayername;
-					
-		return _spoutplayer.getName();		
+		return this.name;		
 	}
+	
 	
 	// Give player one card, can be called two times only
 	public void giveCard(CardEnum card)
@@ -119,9 +107,9 @@ public class PokerPlayer
 	public void notifyTurn()
 	{
 
-		System.out.println("A toi de jouer " + getPlayerName());
+		//System.out.println("A toi de jouer " + getPlayerName());
 		
-		ServerCustomSounds.playYourTurnSound(_spoutplayer);
+		//ServerCustomSounds.playYourTurnSound(_spoutplayer);
 		
 		//envoye un bip au joueur lui signalant que c'est a lui de jouer
 		//(commenté pour le debug sans spout ni bukkit)

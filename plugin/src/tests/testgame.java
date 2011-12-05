@@ -1,3 +1,4 @@
+package tests;
 import com.danstoncube.poker.enums.CardEnum;
 import com.danstoncube.poker.game.PokerGame;
 import com.danstoncube.poker.game.PokerPlayer;
