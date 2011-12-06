@@ -161,6 +161,10 @@ public class PokerPlayer
 		return this.index;
 	}
 
+	public void onPlayersTurn()
+	{
+		
+	}
 	
 	
 	
