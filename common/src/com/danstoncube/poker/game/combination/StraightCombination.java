@@ -9,6 +9,7 @@ import com.danstoncube.poker.enums.CombinationTypeEnum;
 public class StraightCombination extends CardCombination {
 
 	private int straightHighCardValue;
+	private int straightSecondHighCardValue; // cas particulier de la suite à l'AS
 
 	public StraightCombination (int pStraightHighCardValue){
 		super();
@@ -27,7 +28,7 @@ public class StraightCombination extends CardCombination {
 			if(straightHighCardValue != anotherPair.getStraightHighCardValue()){
 				return straightHighCardValue - anotherPair.getStraightHighCardValue();
 			}
-			return 0;
+			return straightSecondHighCardValue - anotherPair.getStraightSecondHighCardValue();
 		}
 		return this.getTypeCombination().compareTo(o.getTypeCombination());
 	}
@@ -37,6 +38,7 @@ public class StraightCombination extends CardCombination {
 		StraightCombination aCombi = null;
 		
 		int highCard = 0;
+		int sHighCard = 0;
 		int countCard = 1;
 		// Sortie de boucle plus complexe : sort si la carte suivante ne fait pas parti de la suite
 		// Permet de savoir si suite ï¿½ l'AS
@@ -53,18 +55,21 @@ public class StraightCombination extends CardCombination {
 				highCard = pListCards.get(i).getValue();
 			}
 		}
+		sHighCard = highCard-1;
 		// cas particulier de l'AS
 		if(countCard >= 4){
 			// en dur parce que pas d'Enum sur les cards !
 			if(highCard - countCard == 1 && pListCards.get(0).getValue() == 14){
 				highCard =pListCards.get(0).getValue();
 				countCard ++;
+				sHighCard ++;
 			}
 		}
 		
 		
 		if(countCard >= 5){
-			aCombi = new StraightCombination(highCard);			
+			aCombi = new StraightCombination(highCard);
+			aCombi.setStraightSecondHighCardValue(sHighCard);
 		}
 		return aCombi;
 	}
@@ -79,7 +84,18 @@ public class StraightCombination extends CardCombination {
 	
 
 	public String getMessage(){
-		return "Straight : " + straightHighCardValue ;
+		if(straightHighCardValue == 14){
+			return "Straight : " + straightHighCardValue + " " + straightSecondHighCardValue;
+		}
+		return "Straight : " + straightHighCardValue;
+	}
+
+	public int getStraightSecondHighCardValue() {
+		return straightSecondHighCardValue;
+	}
+
+	public void setStraightSecondHighCardValue(int straightSecondHighCardValue) {
+		this.straightSecondHighCardValue = straightSecondHighCardValue;
 	}
 	
 }
