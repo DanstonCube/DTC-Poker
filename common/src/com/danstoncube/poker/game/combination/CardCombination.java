@@ -1,13 +1,14 @@
 package com.danstoncube.poker.game.combination;
 
+import com.danstoncube.poker.enums.CardEnum;
 import com.danstoncube.poker.enums.CombinationTypeEnum;
 
 public abstract class CardCombination implements Comparable<CardCombination> {
 
 	private String message;
-	private CombinationTypeEnum typeCombination = CombinationTypeEnum.HIGHCARD;
-	private int otherCardValue; // valeur des autres cartes
-	
+	private CombinationTypeEnum typeCombination;
+	private CardEnum[] cardArray ;
+	private int cCardArray;
 	
 	/**
 	 * Permet de déterminer la meilleur main d'un joueur 
@@ -15,6 +16,10 @@ public abstract class CardCombination implements Comparable<CardCombination> {
 	 * @return la combinaison la plus forte en main
 	 */
 	
+	public CardCombination(){
+		cardArray = new CardEnum[5];
+		cCardArray = 0;
+	}
 
 
 	public CombinationTypeEnum getTypeCombination() {
@@ -35,17 +40,13 @@ public abstract class CardCombination implements Comparable<CardCombination> {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
-
-	public int getOtherCardValue() {
-		return otherCardValue;
-	}
-
-
-	public void setOtherCardValue(int otherCardValue) {
-		this.otherCardValue = otherCardValue;
+	
+	public boolean isComplet(){
+		return cCardArray == 5;
 	}
 	
-	public abstract boolean isComplet();
+	public void addCard(CardEnum pCard){
+		cardArray[cCardArray++]=pCard;
+	}
 	
 }

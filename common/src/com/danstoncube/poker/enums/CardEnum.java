@@ -93,11 +93,7 @@ public enum CardEnum
 	
 	public int compare(CardEnum anotherCard)
 	{
-		if(value == anotherCard.value)
-			return 0;
-		if(value > anotherCard.value)
-			return 1;
-		return -1;
+		return value - anotherCard.value;
 	}
 
 
