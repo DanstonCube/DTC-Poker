@@ -7,6 +7,7 @@ import java.util.List;
 import com.danstoncube.poker.enums.HandStepEnum;
 import com.danstoncube.poker.enums.PlayerActionEnum;
 
+
 public class PokerGame
 {
 	//Min-max de joueurs pour demarrer une partie
@@ -72,7 +73,7 @@ public class PokerGame
     
     protected void gameStepChanged() {        
         for(PokerGameListener listener : pokerGameListeners) {
-        	listener.onNextStep();
+        	listener.onNextStep(this.getCurrentHand().getStep());
         }
     }
     
@@ -82,16 +83,16 @@ public class PokerGame
         }
     }
     
-    protected void gamePlayerActionChanged(PokerPlayer pokerPlayer, PlayerActionEnum action) {        
+    protected void gamePlayerActionChanged(PokerPlayer pokerPlayer, PlayerActionEnum action, double chipsamount) {        
         for(PokerGameListener listener : pokerGameListeners) {
-        	listener.onPlayerAction(pokerPlayer, action);
+        	listener.onPlayerAction(pokerPlayer, action, chipsamount);
         }
     }
     
-	private void gamePlayerChanged()
+	private void gamePlayerChanged(PokerPlayer pokerPlayer)
 	{
 		for(PokerGameListener listener : pokerGameListeners) {
-        	listener.onPlayerChanged();
+        	listener.onPlayerChanged(pokerPlayer);
         }
 		
 	}
@@ -175,9 +176,6 @@ public class PokerGame
 	//Callback "action joueur"
 	public void playerPlay(PokerPlayer player, PlayerActionEnum action, double chipsamount)
 	{
-		
-		System.out.println("test: " + chipsamount);
-		
 		//Si chipsamount > 0, on enleve les chips au joueur et on les ajoute au pot partiel
 		if(chipsamount > 0)
 		{
@@ -208,6 +206,9 @@ public class PokerGame
 				//TODO action "coucher"				
 			break;
 		}
+		
+		
+		this.gamePlayerActionChanged(player, action, chipsamount);
 		
 
 		//TODO: savoir si tout le monde a joué ou non !
@@ -534,7 +535,17 @@ public class PokerGame
 		setPlayer(getNextPlayer());
 	
 		//TODO: notify player changed
-		this.gamePlayerChanged();
+		this.gamePlayerChanged(this.getCurrentPlayer());
+	}
+
+	public PokerPlayer getPlayer(String playerName)
+	{
+		for(PokerPlayer p : players)
+		{
+			if(p.getPlayerName().compareToIgnoreCase(playerName)==0)
+				return p;
+		}
+		return null;
 	}
 
 

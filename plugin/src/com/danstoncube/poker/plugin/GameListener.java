@@ -4,6 +4,7 @@ import com.danstoncube.poker.enums.PlayerActionEnum;
 import com.danstoncube.poker.game.PokerGameListener;
 import com.danstoncube.poker.game.PokerHand;
 import com.danstoncube.poker.game.PokerPlayer;
+import com.danstoncube.poker.game.PokerStep;
 
 public class GameListener  implements PokerGameListener
 {
@@ -17,19 +18,8 @@ public class GameListener  implements PokerGameListener
 	}
 			
 	
-	@Override
-	public void onNextStep()
-	{
-		//this.gameop.nextStep();
-	}
 
-	@Override
-	public void onPlayerAction(PokerPlayer pokerPlayer, PlayerActionEnum action)
-	{
-		//Send packet to clients to let them know player played
-		
-		
-	}
+	
 
 	@Override
 	public void onNextHand(PokerHand newhand)
@@ -64,7 +54,7 @@ public class GameListener  implements PokerGameListener
 
 
 	@Override
-	public void onPlayerChanged()
+	public void onPlayerChanged(PokerPlayer player)
 	{
 		// TODO Auto-generated method stub
 		
@@ -81,6 +71,31 @@ public class GameListener  implements PokerGameListener
 		this.gameop = gameop;
 	}
 
+
+	@Override
+	public void onPlayerAction(PokerPlayer pokerPlayer,
+			PlayerActionEnum action, double chipsamount)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+	@Override
+	public void onNextStep(PokerStep newStep)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+	
 
 	
 

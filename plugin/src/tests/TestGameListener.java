@@ -4,6 +4,7 @@ import com.danstoncube.poker.enums.PlayerActionEnum;
 import com.danstoncube.poker.game.PokerGameListener;
 import com.danstoncube.poker.game.PokerHand;
 import com.danstoncube.poker.game.PokerPlayer;
+import com.danstoncube.poker.game.PokerStep;
 
 public class TestGameListener implements PokerGameListener
 {
@@ -37,24 +38,26 @@ public class TestGameListener implements PokerGameListener
 	}
 
 	@Override
-	public void onNextStep()
+	public void onNextStep(PokerStep newStep)
 	{
 		// TODO Auto-generated method stub
 		System.out.println("EVENT: onNextStep");
 	}
 
+	
+
 	@Override
-	public void onPlayerAction(PokerPlayer pokerPlayer, PlayerActionEnum action)
+	public void onPlayerChanged(PokerPlayer player)
 	{
-		// TODO Auto-generated method stub
-		System.out.println("EVENT: onPlayerAction");
+		System.out.println("EVENT: onPlayerChanged -> Au tour de: " + player.getPlayerName());		
 	}
 
 	@Override
-	public void onPlayerChanged()
+	public void onPlayerAction(PokerPlayer pokerPlayer,
+			PlayerActionEnum action, double chipsAmount)
 	{
 		// TODO Auto-generated method stub
-		System.out.println("EVENT: onPlayerChanged");
+		System.out.println("EVENT: onPlayerAction -> " + pokerPlayer.getPlayerName() + "=" + action.toString() + " (" + chipsAmount + ")");
 	}
 
 }

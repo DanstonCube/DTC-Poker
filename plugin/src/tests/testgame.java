@@ -23,13 +23,13 @@ public class testgame
 		GameOperator gameop = gamemgr.createNewGame(2,8,null);
 		PokerGame game = gameop.getGame();
 		
-		//game.addPokerGameListener(listener);
+		game.addPokerGameListener(listener);
 		
 		//Ajoute 4 joueurs
-		game.addPlayer(new PokerPlayerHandler("toto"), 0, 1500);
-		game.addPlayer(new PokerPlayerHandler("titi"), 2, 1500);
-		game.addPlayer(new PokerPlayerHandler("tutu"), 3, 1500);
-		game.addPlayer(new PokerPlayerHandler("tata"), 6, 1500);
+		game.addPlayer(new PokerPlayer("toto"), 0, 1500);
+		game.addPlayer(new PokerPlayer("titi"), 2, 1500);
+		game.addPlayer(new PokerPlayer("tutu"), 3, 1500);
+		game.addPlayer(new PokerPlayer("tata"), 6, 1500);
 		
 		
 		game.start();
@@ -56,22 +56,9 @@ public class testgame
 		
 		DisplayGameStepInfo(game);
 		
-		
-		
-		
-		//System.out.println("Au tour de " + game.getPlayer().getPlayerName());
-		
 		game.playerPlay(game.getCurrentPlayer(), PlayerActionEnum.FOLD, 0.0);
-		
-		System.out.println("Au tour de " + game.getPlayer().getPlayerName());
-		
 		game.playerPlay(game.getCurrentPlayer(), PlayerActionEnum.FOLD, 0.0);
-		
-		System.out.println("Au tour de " + game.getPlayer().getPlayerName());
 		game.playerPlay(game.getCurrentPlayer(), PlayerActionEnum.CALL, 5.0);
-		
-		System.out.println("Au tour de " + game.getPlayer().getPlayerName());
-		
 		game.playerPlay(game.getCurrentPlayer(), PlayerActionEnum.CHECK, 0.0);
 
 		
@@ -80,6 +67,7 @@ public class testgame
 		
 		/* 2EME TOUR */
 		DisplayGameStepInfo(game);
+		
 		
 		
 	}

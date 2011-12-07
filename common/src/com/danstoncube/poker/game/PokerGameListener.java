@@ -10,9 +10,9 @@ public interface PokerGameListener
 	
 	
 	public void onNextHand(PokerHand newhand);		
-	public void onNextStep();		
-	public void onPlayerAction(PokerPlayer pokerPlayer, PlayerActionEnum action);
-	public void onPlayerChanged();
+	public void onNextStep(PokerStep newStep);		
+	public void onPlayerAction(PokerPlayer pokerPlayer, PlayerActionEnum action, double chipsamount);
+	public void onPlayerChanged(PokerPlayer pokerPlayer);
 
 
 	
