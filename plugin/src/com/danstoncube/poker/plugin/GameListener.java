@@ -5,6 +5,7 @@ import com.danstoncube.poker.game.PokerGameListener;
 import com.danstoncube.poker.game.PokerHand;
 import com.danstoncube.poker.game.PokerPlayer;
 import com.danstoncube.poker.game.PokerStep;
+import com.danstoncube.poker.plugin.packets.PlayerActionPacket;
 
 public class GameListener  implements PokerGameListener
 {
@@ -76,8 +77,13 @@ public class GameListener  implements PokerGameListener
 	public void onPlayerAction(PokerPlayer pokerPlayer,
 			PlayerActionEnum action, double chipsamount)
 	{
-		// TODO Auto-generated method stub
 		
+		//Prepare packet pour notification autres joueurs
+		PlayerActionPacket packet = new PlayerActionPacket();
+		packet.setPlayer(pokerPlayer).setPlayerAction(action).setChipsAmount(chipsamount);
+		
+		//Il faudra envoyer le packet aux autres joueurs également
+		//TODO: packet.send(this.getSpoutplayersToWarnCollection()
 	}
 
 

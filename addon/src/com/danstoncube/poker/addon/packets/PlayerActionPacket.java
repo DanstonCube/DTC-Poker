@@ -1,94 +1,110 @@
 package com.danstoncube.poker.addon.packets;
 
+import org.spoutcraft.spoutcraftapi.Spoutcraft;
 import org.spoutcraft.spoutcraftapi.io.AddonPacket;
 import org.spoutcraft.spoutcraftapi.io.SpoutInputStream;
 import org.spoutcraft.spoutcraftapi.io.SpoutOutputStream;
 
 import com.danstoncube.poker.enums.PlayerActionEnum;
-import com.danstoncube.poker.game.PokerPlayer;
 
 public class PlayerActionPacket extends AddonPacket
 {
+
+	private String playerName = null;
+	private PlayerActionEnum action = null;
+	private Double bet = 0.0;
+	private String gameId;
 	
-	private PokerPlayer _pokerPlayer = null;
-	private PlayerActionEnum _action = null;
-	private Double _bet = 0.0;
 	
-	
-	public PlayerActionPacket(PokerPlayer player, PlayerActionEnum action, Double bet)
+	public PlayerActionPacket(String gameId, String player, PlayerActionEnum action, Double chipsAmount)
 	{
-		this.setPokerPlayer(player).setAction(action).setBet(bet);
+		this.setPlayerName(player).setAction(action).setBet(chipsAmount).setGameId(gameId);
 	}
 
 
-	public PokerPlayer getPokerPlayer()
+	private PlayerActionPacket setGameId(String id)
 	{
-		return _pokerPlayer;
-	}
-
-
-	public PlayerActionPacket setPokerPlayer(PokerPlayer  pokerPlayer)
-	{
-		this._pokerPlayer = pokerPlayer;
+		this.gameId = id;
 		return this;
 	}
 
+
+	private PlayerActionPacket setPlayerName(String player)
+	{
+		this.playerName = player;
+		return this;
+	}
+	
+	public PlayerActionPacket setAction(PlayerActionEnum action)
+	{
+		this.action = action;
+		return this;
+	}
+	
+	public PlayerActionPacket setBet(Double bet)
+	{
+		this.bet = bet;
+		return this;
+	}
+
+	
+	private String getGameId()
+	{
+		return this.gameId;
+	}
+
+	public String getPlayerName()
+	{
+		return playerName;
+	}
 
 	public PlayerActionEnum getAction()
 	{
-		return _action;
+		return action;
 	}
-
-
-	public PlayerActionPacket setAction(PlayerActionEnum action)
-	{
-		this._action = action;
-		return this;
-	}
-
 
 	public Double getBet()
 	{
-		return _bet;
+		return bet;
 	}
 
 
-	public PlayerActionPacket setBet(Double bet)
-	{
-		this._bet = bet;
-		return this;
-	}
+	
 
 
 	@Override
 	public void read(SpoutInputStream input)
 	{
-		String playerName = input.readString("");
-		PlayerActionEnum action = PlayerActionEnum.valueOf(input.readString(""));
-		double betSize = input.readDouble();
+		setGameId(input.readString(""));
+		setPlayerName(input.readString(""));
+		setAction(PlayerActionEnum.valueOf(input.readString("")));
+		setBet(input.readDouble());
 		
-		//Game.getGame().
 		
-		System.out.println("Someone played, player = " + playerName + " action = " + action + " betSize = " + betSize );
+		
+		System.out.println("Someone played, game = " + this.getGameId() + " player = " + this.getPlayerName() + " action = " + this.getAction() + " betSize = " + this.getBet() );
 		
 		//TODO: beeep
 		//TODO: show action buttons
 	}
 
 
+	
+
+
 	@Override
 	public void run()
 	{
-		// TODO Auto-generated method stub
 	}
 
 
 	@Override
 	public void write(SpoutOutputStream output)
 	{		
-		output.writeString(_pokerPlayer.getPlayerName());
-		output.writeString(_action.toString());
-		output.writeDouble(_bet);		
+		output.writeString(gameId);
+		output.writeString(Spoutcraft.getActivePlayer().getName());
+		output.writeString(action.toString());
+		output.writeDouble(bet);
 	}
 	
 	

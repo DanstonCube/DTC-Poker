@@ -63,6 +63,8 @@ public class testgame
 
 		
 		//On passe au flop
+		
+		//TODO: le nextStep devrait etre automatique si tous les joueurs on égalisé
 		game.nextStep();
 		
 		/* 2EME TOUR */

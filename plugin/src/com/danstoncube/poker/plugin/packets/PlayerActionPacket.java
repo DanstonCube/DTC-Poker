@@ -10,7 +10,7 @@ import com.danstoncube.poker.game.PokerGame;
 import com.danstoncube.poker.game.PokerPlayer;
 import com.danstoncube.poker.plugin.Poker;
 
-public class PlayerPlayPacket extends AddonPacket
+public class PlayerActionPacket extends AddonPacket
 {
 
 	private String gameId = "";
@@ -55,33 +55,39 @@ public class PlayerPlayPacket extends AddonPacket
 	}
 
 	
-	public PlayerPlayPacket setGameId(String gameId)
+	public PlayerActionPacket setGameId(String gameId)
 	{
 		this.gameId = gameId;
 		return this;
 	}
 	
-	public PlayerPlayPacket setPlayer(PokerPlayer player)
+	public PlayerActionPacket setPlayer(PokerPlayer player)
 	{
 		this.playerName = player.getPlayerName();
 		return this;
 	}
 	
-	public PlayerPlayPacket setPlayerName(String playerName)
+	public PlayerActionPacket setPlayerName(String playerName)
 	{
 		this.playerName = playerName;
 		return this;
 	}
 	
-	public PlayerPlayPacket setGame(PokerGame game)
+	public PlayerActionPacket setGame(PokerGame game)
 	{
 		this.gameId = game.getId();
 		return this;
 	}
 		
-	public PlayerPlayPacket setPlayerAction(PlayerActionEnum action)
+	public PlayerActionPacket setPlayerAction(PlayerActionEnum action)
 	{
 		this.playerAction = action;
+		return this;
+	}
+
+	public PlayerActionPacket setChipsAmount(double chipsAmount)
+	{
+		this.chips = chipsAmount;
 		return this;
 	}
 	
