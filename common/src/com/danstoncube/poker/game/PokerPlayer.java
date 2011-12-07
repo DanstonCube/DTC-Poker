@@ -165,6 +165,13 @@ public class PokerPlayer
 	{
 		
 	}
+
+
+	public void fold()
+	{
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

@@ -1,14 +1,13 @@
-package com.danstoncube.poker.server;
+package com.danstoncube.poker.plugin;
 
 import org.getspout.spoutapi.SpoutManager;
 
 
-import com.danstoncube.poker.plugin.Poker;
-import com.danstoncube.poker.server.customblocks.PokerTable;
-import com.danstoncube.poker.server.customblocks.table.PokerTableBlock;
+import com.danstoncube.poker.plugin.customblocks.PokerTable;
+import com.danstoncube.poker.plugin.customblocks.table.PokerTableBlock;
 
 
-public class ServerCustomBlocks
+public class CustomBlocks
 {
 	public static PokerTableBlock pokerTableBlock;
 

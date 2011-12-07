@@ -1,4 +1,4 @@
-package com.danstoncube.poker.server.customblocks;
+package com.danstoncube.poker.plugin.customblocks;
 
 import org.getspout.spoutapi.block.design.Texture;
 

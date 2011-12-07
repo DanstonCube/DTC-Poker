@@ -1,9 +1,9 @@
-package com.danstoncube.poker.server.customblocks.table;
+package com.danstoncube.poker.plugin.customblocks.table;
 
 import org.getspout.spoutapi.block.design.GenericCubeBlockDesign;
 
 import com.danstoncube.poker.plugin.Poker;
-import com.danstoncube.poker.server.customblocks.PokerTable;
+import com.danstoncube.poker.plugin.customblocks.PokerTable;
 
 
 public class PokerTableDesign extends GenericCubeBlockDesign 

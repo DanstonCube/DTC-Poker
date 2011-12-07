@@ -11,29 +11,23 @@ import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.danstoncube.poker.plugin.gui.PokerGameCreateGuiScreenListener;
-import com.danstoncube.poker.plugin.gui.PokerPlayerGuiScreenListener;
-import com.danstoncube.poker.server.ServerCommandOperator;
-import com.danstoncube.poker.server.ServerCustomBlocks;
-import com.danstoncube.poker.server.ServerGameManager;
-import com.danstoncube.poker.server.ServerPluginListener;
-
 public class Poker extends JavaPlugin
 {
 
 	private static Poker _instance = null;
 	
-	private ServerGameManager _gamemanager = new ServerGameManager();
+	private GameManager _gamemanager = new GameManager();
 
 	public Logger log;
 	public String logPrefix = "[Poker] ";
+	public String chatPrefix = "[Poker] ";
 
 	public static Poker getInstance()
 	{
 		return _instance;
 	}
 
-	public static ServerGameManager getGameManager()
+	public static GameManager getGameManager()
 	{
 		return _instance._gamemanager;
 	}
@@ -43,7 +37,7 @@ public class Poker extends JavaPlugin
 	{
 		Poker._instance = null;
 		//TODO: finire proprement les parties en cours
-		getServer().getLogger().info("DTC - Poker désactivé !");
+		log.info(logPrefix + "disabled !");
 	}
 
 	@Override
@@ -54,26 +48,26 @@ public class Poker extends JavaPlugin
 		log = getServer().getLogger();
 
 		PluginManager pm = getServer().getPluginManager();
-		
-		//listeners des différents GUIs pour les actions sur les widgets
-		pm.registerEvent(Event.Type.CUSTOM_EVENT, new PokerPlayerGuiScreenListener(), Priority.Normal, this);
-		pm.registerEvent(Event.Type.CUSTOM_EVENT, new PokerGameCreateGuiScreenListener(), Priority.Normal, this);
-		
+				
 		//pour être au courant de l'activation/désactivation d'autres plugins (iConomy surtout)
-        pm.registerEvent(Event.Type.PLUGIN_ENABLE, new ServerPluginListener(), Priority.Monitor, this);
-        pm.registerEvent(Event.Type.PLUGIN_DISABLE, new ServerPluginListener(), Priority.Monitor, this);
+        pm.registerEvent(Event.Type.PLUGIN_ENABLE, new PluginListener(), Priority.Monitor, this);
+        pm.registerEvent(Event.Type.PLUGIN_DISABLE, new PluginListener(), Priority.Monitor, this);
        
 		//getServer().getScheduler().scheduleAsyncDelayedTask(this, paramRunnable)
         
-        ServerCustomBlocks.precacheTextures();
-        ServerCustomBlocks.loadTextures();
-        ServerCustomBlocks.createBlocks();
-        ServerCustomBlocks.createRecipes();
-		
+        //CustomBlocks moved in addon ? 
+        /*
+        CustomBlocks.precacheTextures();
+        CustomBlocks.loadTextures();
+        CustomBlocks.createBlocks();
+        CustomBlocks.createRecipes();
+		*/
+        
+        
         //CardWidget.precacheTexture();
       
         
-		getServer().getLogger().info(logPrefix + "activé !");
+		log.info(logPrefix + "enabled !");
         
 	}
 
@@ -90,14 +84,14 @@ public class Poker extends JavaPlugin
 
 		if(cmd.getName().equalsIgnoreCase("create") || cmd.getName().equalsIgnoreCase("pokercreate")) 
 		{
-			return ServerCommandOperator.createCommand(player, cmd, commandLabel, args);
+			return CommandOperator.createCommand(player, cmd, commandLabel, args);
 		}		
 		else if(cmd.getName().equalsIgnoreCase("join") || cmd.getName().equalsIgnoreCase("pokerjoin")) 
 		{
-			return ServerCommandOperator.joinCommand(player, cmd, commandLabel, args);
+			return CommandOperator.joinCommand(player, cmd, commandLabel, args);
 		}
 		
-		ServerCommandOperator.usageCommand(player);
+		CommandOperator.usageCommand(player);
 		return false;
 		
 	}

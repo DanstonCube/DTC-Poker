@@ -18,8 +18,8 @@ public class PokerHand
 	
 	public boolean finished = false;
 	
-	public double smallBlind = 0.0;
-	public double bigBlind = 0.0;
+	public double smallBlind = 5.0;
+	public double bigBlind = 10.0;
 	private double pot = 0.0;
 	
 	
@@ -31,7 +31,7 @@ public class PokerHand
 	public CardEnum[] flop = new CardEnum[5];
 
 	
-	PokerHand()
+	public PokerHand()
 	{
 		this.id = "A RANDOM ID"; //TODO: id unique (un tour est unique)
 	}
@@ -40,30 +40,23 @@ public class PokerHand
 
 	public void addPot(Double chips)
 	{
-		this.pot += pot;
+		this.pot += chips;
 	}
 	
-	public void setPot(Double pot)
+	public void setPot(Double chips)
 	{
-		this.pot  = pot;
-		
+		this.pot = chips;
 	}
-
-
-
 
 	public double getPot()
 	{
-		return pot;
+		return this.pot;
 	}
 
 
 
 
-	public void setPot(double pot)
-	{
-		this.pot = pot;
-	}
+	
 
 
 
@@ -103,4 +96,30 @@ public class PokerHand
 		playerAt.setDealer(true);
 		this.splayer = playerAt;
 	}
+
+
+	public PokerPlayer getDealer()
+	{
+		return this.dealer;
+	}
+	
+	public PokerPlayer getSmallBlindPlayer()
+	{
+		return this.sbplayer;
+	}
+	
+	public PokerPlayer getBigBlindPlayer()
+	{
+		return this.bbplayer;
+	}
+
+
+
+	public CardEnum[] getFlop()
+	{
+		return this.flop;
+	}
+	
+	
+	
 }

@@ -67,6 +67,7 @@ public class PlayerActionPacket extends AddonPacket
 		PlayerActionEnum action = PlayerActionEnum.valueOf(input.readString(""));
 		double betSize = input.readDouble();
 		
+		//Game.getGame().
 		
 		System.out.println("Someone played, player = " + playerName + " action = " + action + " betSize = " + betSize );
 		

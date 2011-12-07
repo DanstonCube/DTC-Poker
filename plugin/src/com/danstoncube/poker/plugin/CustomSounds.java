@@ -1,11 +1,10 @@
-package com.danstoncube.poker.server;
+package com.danstoncube.poker.plugin;
 
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-import com.danstoncube.poker.plugin.Poker;
 
-public class ServerCustomSounds
+public class CustomSounds
 {
 	public static final String yourTurnUrl = "http://dl.dropbox.com/u/15091039/poker_yourturn.ogg";
 	public static final String timeoutAlarmUrl = "http://dl.dropbox.com/u/15091039/poker_warningtimeout.ogg";
@@ -19,37 +18,37 @@ public class ServerCustomSounds
 	
 	public static void playYourTurnSound(SpoutPlayer player)
 	{
-		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, ServerCustomSounds.yourTurnUrl, false) ;
+		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, CustomSounds.yourTurnUrl, false) ;
 	}
 	
 	public static void playTimeoutAlarmSound(SpoutPlayer player)
 	{
-		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, ServerCustomSounds.timeoutAlarmUrl, false) ;
+		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, CustomSounds.timeoutAlarmUrl, false) ;
 	}
 	
 	public static void playFoldSound(SpoutPlayer player)
 	{
-		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, ServerCustomSounds.foldUrl, false) ;
+		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, CustomSounds.foldUrl, false) ;
 	}
 	
 	public static void playCheckSound(SpoutPlayer player)
 	{
-		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, ServerCustomSounds.checkUrl, false) ;
+		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, CustomSounds.checkUrl, false) ;
 	}
 	
 	public static void playBetSound(SpoutPlayer player)
 	{
-		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, ServerCustomSounds.betUrl, false) ;
+		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, CustomSounds.betUrl, false) ;
 	}
 	
 	public static void playDrawSound(SpoutPlayer player)
 	{
-		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, ServerCustomSounds.drawUrl, false) ;
+		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, CustomSounds.drawUrl, false) ;
 	}
 	
 	public static void playEndSound(SpoutPlayer player)
 	{
-		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, ServerCustomSounds.endUrl, false) ;
+		SpoutManager.getSoundManager().playCustomSoundEffect(Poker.getInstance(), player, CustomSounds.endUrl, false) ;
 	}
 	
 }

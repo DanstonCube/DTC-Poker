@@ -1,15 +1,13 @@
-package com.danstoncube.poker.server;
+package com.danstoncube.poker.plugin;
 
 import org.bukkit.plugin.Plugin;
 
-import com.danstoncube.poker.plugin.Messages;
-import com.danstoncube.poker.plugin.Poker;
 import com.danstoncube.tools.banque.iConomy5Balance;
 import com.danstoncube.tools.banque.iConomy6Balance;
 import com.danstoncube.tools.banque.DummyBalance;
 import com.danstoncube.tools.banque.Balance;
 
-public class ServerEconomyHandler 
+public class EconomyHandler 
 {
 	public static Balance balance = null;
 	
@@ -159,7 +157,7 @@ public class ServerEconomyHandler
 	{	
 		if(balance != null)
 		{
-			return ServerEconomyHandler.formatMoney(balance.balance(pName)) +  ServerEconomyHandler.formatCurrency(balance.balance(pName));
+			return EconomyHandler.formatMoney(balance.balance(pName)) +  EconomyHandler.formatCurrency(balance.balance(pName));
 		}		
 		return noConomyErr;
 	}

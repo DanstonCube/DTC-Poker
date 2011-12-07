@@ -1,8 +1,10 @@
 package tests;
 import com.danstoncube.poker.enums.CardEnum;
+import com.danstoncube.poker.enums.PlayerActionEnum;
 import com.danstoncube.poker.game.PokerGame;
 import com.danstoncube.poker.game.PokerPlayer;
-import com.danstoncube.poker.server.ServerGameManager;
+import com.danstoncube.poker.plugin.GameManager;
+import com.danstoncube.poker.plugin.GameOperator;
 
 
 public class testgame
@@ -10,22 +12,33 @@ public class testgame
 
 	public static void main(String[] args)
 	{
-		ServerGameManager gamemgr = new ServerGameManager();
+		GameManager gamemgr = new GameManager();
+		
+		@SuppressWarnings("unused")
+		TestGameListener listener = new TestGameListener();
+		
+		
 		
 		//Nouvelle partie
-		PokerGame currentGame = gamemgr.startNewGame(2,8);		
+		GameOperator gameop = gamemgr.createNewGame(2,8,null);
+		PokerGame game = gameop.getGame();
+		
+		//game.addPokerGameListener(listener);
 		
 		//Ajoute 4 joueurs
-		currentGame.addPlayer(new PokerPlayer("toto"), 0, 1500);
-		currentGame.addPlayer(new PokerPlayer("titi"), 2, 1500);
-		currentGame.addPlayer(new PokerPlayer("tutu"), 3, 1500);
-		currentGame.addPlayer(new PokerPlayer("tata"), 6, 1500);
+		game.addPlayer(new PokerPlayerHandler("toto"), 0, 1500);
+		game.addPlayer(new PokerPlayerHandler("titi"), 2, 1500);
+		game.addPlayer(new PokerPlayerHandler("tutu"), 3, 1500);
+		game.addPlayer(new PokerPlayerHandler("tata"), 6, 1500);
+		
+		
+		game.start();
 		
 		//initialise une main (debutte la partie)
-		currentGame.nextHand();
+		game.nextHand();
 		
 		//debug: affiche les cartes des joueurs		
-		for(PokerPlayer p : currentGame.players)
+		for(PokerPlayer p : game.getPlayers())
 		{
 			if(p==null)
 			{
@@ -37,85 +50,66 @@ public class testgame
 		
 		System.out.println("-------------------------");
 
-		System.out.println("Dealer: " + currentGame.hand.dealer.getPlayerName());		
-		System.out.println("Small blind: " + currentGame.hand.sbplayer.getPlayerName());
-		System.out.println("Big blind: " + currentGame.hand.bbplayer.getPlayerName());
 		
-		System.out.println("-------------------------");
+		/* 1er tour */
 		
-		System.out.println("Au tour de " + currentGame.getPlayer().getPlayerName());
 		
-		currentGame.nextPlayer();
+		DisplayGameStepInfo(game);
 		
-		System.out.println("Au tour de " + currentGame.getPlayer().getPlayerName());
 		
-		currentGame.nextPlayer();
 		
-		System.out.println("Au tour de " + currentGame.getPlayer().getPlayerName());
 		
-		currentGame.nextPlayer();
+		//System.out.println("Au tour de " + game.getPlayer().getPlayerName());
 		
-		System.out.println("Au tour de " + currentGame.getPlayer().getPlayerName());
+		game.playerPlay(game.getCurrentPlayer(), PlayerActionEnum.FOLD, 0.0);
 		
-		currentGame.nextPlayer();
+		System.out.println("Au tour de " + game.getPlayer().getPlayerName());
 		
-		System.out.println("Au tour de " + currentGame.getPlayer().getPlayerName());
+		game.playerPlay(game.getCurrentPlayer(), PlayerActionEnum.FOLD, 0.0);
 		
-		currentGame.nextPlayer();
+		System.out.println("Au tour de " + game.getPlayer().getPlayerName());
+		game.playerPlay(game.getCurrentPlayer(), PlayerActionEnum.CALL, 5.0);
 		
-		System.out.println("Au tour de " + currentGame.getPlayer().getPlayerName());
+		System.out.println("Au tour de " + game.getPlayer().getPlayerName());
 		
-		currentGame.nextPlayer();
-		
-		System.out.println("Au tour de " + currentGame.getPlayer().getPlayerName());
-		
-		currentGame.nextPlayer();
-		
-		System.out.println("Au tour de " + currentGame.getPlayer().getPlayerName());
+		game.playerPlay(game.getCurrentPlayer(), PlayerActionEnum.CHECK, 0.0);
+
 		
 		//On passe au flop
-		currentGame.nextStep();
+		game.nextStep();
 		
-		String flopStepFlop = "";
-		for(CardEnum card : currentGame.hand.flop)
-		{
-			if(card!=null)
-				flopStepFlop += card.getDisplay();
-		}
-		
-		System.out.println("FLOP: " + flopStepFlop);		
-		
-		//on passe a la turn
-		currentGame.nextStep();
-		
-		String flopStepTurn = "";
-		for(CardEnum card : currentGame.hand.flop)
-		{
-			if(card!=null)
-				flopStepTurn += card.getDisplay();
-		}
-		
-		System.out.println("FLOP: " + flopStepTurn);		
-		
-		//on passe a la river
-		currentGame.nextStep();
-		
-		String flopStepRiver = "";
-		for(CardEnum card : currentGame.hand.flop)
-		{
-			if(card!=null)
-				flopStepRiver += card.getDisplay();
-		}
-		
-		System.out.println("FLOP: " + flopStepRiver);		
-		
-		currentGame.nextStep();
-		
+		/* 2EME TOUR */
+		DisplayGameStepInfo(game);
 		
 		
 	}
 	
 	
+	
+	private static void DisplayGameStepInfo(PokerGame game)
+	{
+		System.out.println("Step: " + game.getCurrentHand().getStep().getType());				
+		System.out.println("Pot: " + game.getCurrentHand().getPot());
+		System.out.println("Dealer: " + game.getCurrentHand().getDealer().getPlayerName());		
+		System.out.println("Small blind: " + game.getCurrentHand().getSmallBlindPlayer().getPlayerName());
+		System.out.println("Big blind: " + game.getCurrentHand().getBigBlindPlayer().getPlayerName());
+		System.out.println("Au tour de: " + game.getPlayer().getPlayerName());
+
+		String flopPreFlop = "";
+		for(CardEnum card : game.getCurrentHand().getFlop())
+		{
+			if(card!=null)
+			{
+				if(flopPreFlop!="")
+					flopPreFlop += "-";
+				
+				flopPreFlop += card;
+			}
+		}
+		System.out.println("FLOP: " + flopPreFlop);		
+		
+		System.out.println("-------------------------");
+	}
 	
 	
 	

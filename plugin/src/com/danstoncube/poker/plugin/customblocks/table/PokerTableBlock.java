@@ -1,4 +1,4 @@
-package com.danstoncube.poker.server.customblocks.table;
+package com.danstoncube.poker.plugin.customblocks.table;
 
 
 import org.bukkit.Bukkit;
