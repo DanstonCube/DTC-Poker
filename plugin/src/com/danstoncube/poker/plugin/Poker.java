@@ -11,6 +11,8 @@ import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.danstoncube.poker.plugin.game.GameManager;
+
 public class Poker extends JavaPlugin
 {
 

@@ -3,12 +3,15 @@ package com.danstoncube.poker.addon;
 import org.spoutcraft.spoutcraftapi.Spoutcraft;
 import org.spoutcraft.spoutcraftapi.addon.java.JavaAddon;
 
+import com.danstoncube.poker.addon.game.Game;
 import com.danstoncube.poker.addon.gui.PokerPlayerGui;
 
 public class Poker extends JavaAddon
 {
 
 	public static Poker _instance = null;
+	
+	private Game game = new Game();
 	
 	
 	public static Poker getAddon()
@@ -20,6 +23,9 @@ public class Poker extends JavaAddon
 	{
 		return _instance;
 	}
+	
+	
+	
 	
 	@Override
 	public void onDisable()
@@ -46,6 +52,16 @@ public class Poker extends JavaAddon
 		
 		//Spoutcraft.getKeyBindingManager().registerControl(new KeyBinding(Keyboard.KEY_P))
 		
+	}
+
+	public Game getGame()
+	{
+		return game;
+	}
+
+	public void setGame(Game game)
+	{
+		this.game = game;
 	}
  
 }

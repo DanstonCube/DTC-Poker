@@ -3,8 +3,8 @@ import com.danstoncube.poker.enums.CardEnum;
 import com.danstoncube.poker.enums.PlayerActionEnum;
 import com.danstoncube.poker.game.PokerGame;
 import com.danstoncube.poker.game.PokerPlayer;
-import com.danstoncube.poker.plugin.GameManager;
-import com.danstoncube.poker.plugin.GameOperator;
+import com.danstoncube.poker.plugin.game.GameManager;
+import com.danstoncube.poker.plugin.game.GameOperator;
 
 
 public class testgame

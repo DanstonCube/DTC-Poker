@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 import org.getspout.spoutapi.SpoutManager;
 
+import com.danstoncube.poker.plugin.game.GameOperator;
 import com.danstoncube.poker.plugin.gui.PokerPlayerGui;
 
 public class CommandOperator

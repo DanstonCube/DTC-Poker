@@ -30,7 +30,7 @@ public class PlayerActionPacket extends AddonPacket
 		PokerPlayer player = game.getPlayer(playerName);
 		
 		
-		//TODO: verif que c'est bien au joueur de jouer
+		//TODO: verif que c'est bien au joueur de jouer ?
 		
 		
 		game.playerPlay(player, playerAction, chips);

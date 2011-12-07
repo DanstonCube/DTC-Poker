@@ -1,4 +1,4 @@
-package com.danstoncube.poker.plugin;
+package com.danstoncube.poker.plugin.game;
 
 import com.danstoncube.poker.enums.PlayerActionEnum;
 import com.danstoncube.poker.game.PokerGameListener;

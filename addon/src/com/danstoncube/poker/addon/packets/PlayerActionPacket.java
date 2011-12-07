@@ -5,6 +5,7 @@ import org.spoutcraft.spoutcraftapi.io.AddonPacket;
 import org.spoutcraft.spoutcraftapi.io.SpoutInputStream;
 import org.spoutcraft.spoutcraftapi.io.SpoutOutputStream;
 
+import com.danstoncube.poker.addon.game.Game;
 import com.danstoncube.poker.enums.PlayerActionEnum;
 
 public class PlayerActionPacket extends AddonPacket
@@ -80,12 +81,12 @@ public class PlayerActionPacket extends AddonPacket
 		setAction(PlayerActionEnum.valueOf(input.readString("")));
 		setBet(input.readDouble());
 		
-		
+		Game theGame = Game.getInstance();
+		theGame.onPlayerAction(theGame.getPlayer(this.getPlayerName()), this.getAction(), this.getBet());
 		
 		System.out.println("Someone played, game = " + this.getGameId() + " player = " + this.getPlayerName() + " action = " + this.getAction() + " betSize = " + this.getBet() );
 		
-		//TODO: beeep
-		//TODO: show action buttons
+		//TODO: raise event OnPlayerAction
 	}
 
 

@@ -1,4 +1,4 @@
-package com.danstoncube.poker.plugin;
+package com.danstoncube.poker.plugin.game;
 
 import java.util.HashMap;
 
