@@ -6,7 +6,7 @@
 
 	<!-- Project information -->
 	<groupId>com.danstoncube.poker</groupId>
-	<artifactId>plugin</artifactId>
+	<artifactId>PokerPlugin</artifactId>
 	<version>dev-SNAPSHOT</version>
 	<name>DTC-Poker</name>
 	<url>http://www.danstoncube.com</url>
@@ -14,7 +14,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.mainClass>${project.groupId}.${project.artifactId}.Poker</project.mainClass>
+		<project.mainClass>${project.groupId}.plugin.Poker</project.mainClass>
 		<project.release.version>1.0.0</project.release.version>
 		<project.build.number>0</project.build.number>
 		<project.version.string>${release.version}.${build.number}</project.version.string>
