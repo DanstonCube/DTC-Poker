@@ -7,7 +7,7 @@ cd ./tmp/
 wget http://ci.getspout.org/job/Spout/lastSuccessfulBuild/artifact/target/spout-dev-SNAPSHOT.jar
 
 rm ../plugins/spout*.jar
-mv spout-dev-SNAPSHOT.jar ../dist/plugins/
+mv spout-dev-SNAPSHOT.jar ../dist/server/plugins/
 
 
 #spoutapi
@@ -21,7 +21,7 @@ mv spoutcraftapi-dev-SNAPSHOT.jar ../libs/
 
 #craftbukkit
 wget http://ci.bukkit.org/job/dev-CraftBukkit/lastSuccessfulBuild/artifact/target/craftbukkit-1.0.0-SNAPSHOT.jar
-mv craftbukkit-1.0.0-SNAPSHOT.jar ../dist/
+mv craftbukkit-1.0.0-SNAPSHOT.jar ../dist/server/
 
 cd ../
 
