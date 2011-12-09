@@ -76,9 +76,9 @@ public class PlayerActionPacket extends AddonPacket
 	@Override
 	public void read(SpoutInputStream input)
 	{
-		setGameId(input.readString(""));
-		setPlayerName(input.readString(""));
-		setAction(PlayerActionEnum.valueOf(input.readString("")));
+		setGameId(input.readString());
+		setPlayerName(input.readString());
+		setAction(PlayerActionEnum.valueOf(input.readString()));
 		setBet(input.readDouble());
 		
 		Game theGame = Game.getInstance();

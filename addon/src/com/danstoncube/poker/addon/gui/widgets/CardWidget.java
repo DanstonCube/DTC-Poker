@@ -2,6 +2,8 @@ package com.danstoncube.poker.addon.gui.widgets;
 
 
 import org.spoutcraft.spoutcraftapi.gui.GenericTexture;
+import org.spoutcraft.spoutcraftapi.gui.WidgetAnchor;
+
 import com.danstoncube.poker.enums.CardEnum;
 
 
@@ -20,6 +22,7 @@ public class CardWidget extends GenericTexture
 		
 		this.setUrl(textureUrl);
 		
+		this.setAnchor(WidgetAnchor.TOP_LEFT);
 		this.setWidth(cardWidth);
 		this.setHeight(cardHeight);
 		this.setLeft(0);

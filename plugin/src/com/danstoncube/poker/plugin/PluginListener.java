@@ -5,8 +5,6 @@ import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.event.server.ServerListener;
 
-import com.danstoncube.tools.banque.DummyBalance;
-
 
  
 
@@ -25,7 +23,7 @@ public class PluginListener extends ServerListener {
     @Override
     public void onPluginDisable(PluginDisableEvent event) 
     {
-    	
+    	/*
     	if (EconomyHandler.balance != null) 
     	{
             if (event.getPlugin().getDescription().getName().equals("iConomy"))
@@ -35,17 +33,19 @@ public class PluginListener extends ServerListener {
                 plugin.log.info(plugin.logPrefix + Messages.getString("Econ.UNHOOKED"));
             }
         }
-    	
+    	*/
     	
     }
 
     @Override
     public void onPluginEnable(PluginEnableEvent event) 
     {
+    	/*
 		//On teste si iConomy est up
 		if (EconomyHandler.balance == null) 
 		{
-			EconomyHandler.setupEconomy();
+			//EconomyHandler.setupEconomy();
 		}
+		*/
     }
 }

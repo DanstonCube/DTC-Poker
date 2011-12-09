@@ -21,9 +21,9 @@ public class PlayerActionPacket extends AddonPacket
 	@Override
 	public void read(SpoutInputStream arg0)
 	{
-		gameId = arg0.readString("");		
-		playerName = arg0.readString("");
-		playerAction = PlayerActionEnum.valueOf(arg0.readString(""));
+		gameId = arg0.readString();		
+		playerName = arg0.readString();
+		playerAction = PlayerActionEnum.valueOf(arg0.readString());
 		chips = arg0.readDouble();
 		
 		PokerGame game = Poker.getGameManager().getGame(gameId).getGame();

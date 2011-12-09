@@ -2,6 +2,7 @@ package com.danstoncube.poker.plugin.gui;
 
 import org.getspout.spoutapi.event.screen.ButtonClickEvent;
 import org.getspout.spoutapi.event.screen.ScreenListener;
+import org.getspout.spoutapi.gui.PopupScreen;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class PokerGameCreateGuiScreenListener extends ScreenListener 
@@ -16,11 +17,17 @@ public class PokerGameCreateGuiScreenListener extends ScreenListener
 		{
 			SpoutPlayer player = event.getPlayer();
 			
-			PokerPlayerGui popup = (PokerPlayerGui) player.getMainScreen().getActivePopup();
+			PopupScreen screen =  player.getMainScreen().getActivePopup();
 			
-			if(popup == null)
+			if(screen == null)
 				return;
 			
+			if(!(screen instanceof PokerPlayerGui))
+				return;
+			
+			PokerPlayerGui popup = (PokerPlayerGui) screen;
+			
+		
 					
 			popup.close();		
 		}

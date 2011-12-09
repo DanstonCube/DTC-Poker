@@ -1,15 +1,11 @@
 package com.danstoncube.poker.plugin;
 
-import org.bukkit.plugin.Plugin;
 
-import com.danstoncube.tools.banque.iConomy5Balance;
-import com.danstoncube.tools.banque.iConomy6Balance;
-import com.danstoncube.tools.banque.DummyBalance;
-import com.danstoncube.tools.banque.Balance;
+
 
 public class EconomyHandler 
 {
-	public static Balance balance = null;
+	//public static Balance balance = null;
 	
 	public static String currencyName = Messages.getString("Econ.CURRENCY"); //$NON-NLS-1$
 	
@@ -21,7 +17,7 @@ public class EconomyHandler
 	public static boolean currencyEnabled = false;
 	
 	
-	
+	/*
 	public static void setupEconomy() 
 	{
 		Poker plugin = Poker.getInstance();
@@ -58,8 +54,9 @@ public class EconomyHandler
 		}
 		
 	}
-
+	 */
 	
+	/*
 	public static int hasEnough(String p, double amount) 
 	{
 		// returns -3 if something odd happened
@@ -71,6 +68,8 @@ public class EconomyHandler
 		if (!currencyEnabled){
 			return -1;
 		}
+		
+		
 		
 		if(balance != null)
 		{
@@ -89,23 +88,11 @@ public class EconomyHandler
 		}
 		
 		
-		/*
-		if (iconomy != null){
-			if (!(iConomy.hasAccount(pName))){
-				return 0;
-			}
-			
-			if (iConomy.getAccount(pName).getHoldings().hasEnough(amount))
-				return 1;
-			else return -2;
-		}
 		
-		return -3;
-		*/
 	}
+	*/
 	
-	
-	
+	/*
 	//@SuppressWarnings("deprecation")
 	public static int modifyMoney(String pName, Double costAmount) 
 	{
@@ -203,7 +190,7 @@ public class EconomyHandler
 		return String.valueOf(i/10) + "." + mod; //$NON-NLS-1$
 	}
 	
-	
+	*/
 	
 	
 	
