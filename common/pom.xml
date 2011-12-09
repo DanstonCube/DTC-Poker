@@ -1,0 +1,44 @@
+<!-- Maven build file for DTC-Poker-Common -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Project information -->
+	<groupId>com.danstoncube.poker</groupId>
+	<artifactId>common</artifactId>
+	<version>dev-SNAPSHOT</version>
+	<name>DTC-Poker-Common</name>
+	<url>http://www.danstoncube.com</url>
+	<description></description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.mainClass>${project.groupId}.${project.artifactId}.Poker</project.mainClass>
+		<project.release.version>1.0.0</project.release.version>
+		<project.build.number>0</project.build.number>
+		<project.version.string>${release.version}.${build.number}</project.version.string>
+	</properties>
+
+
+	<build>
+		<defaultGoal>clean package</defaultGoal>
+		<sourceDirectory>${basedir}/src</sourceDirectory>
+
+		<!-- Plugins -->
+		<plugins>
+			<!-- Compile plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+			</plugin>
+			<!-- JAR creation plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.2</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>
