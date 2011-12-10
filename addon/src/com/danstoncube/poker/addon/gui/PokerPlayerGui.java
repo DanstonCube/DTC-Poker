@@ -4,51 +4,45 @@ import org.spoutcraft.spoutcraftapi.Spoutcraft;
 import org.spoutcraft.spoutcraftapi.gui.Container;
 import org.spoutcraft.spoutcraftapi.gui.ContainerType;
 import org.spoutcraft.spoutcraftapi.gui.GenericContainer;
+import org.spoutcraft.spoutcraftapi.gui.GenericLabel;
+import org.spoutcraft.spoutcraftapi.gui.GenericPopup;
+import org.spoutcraft.spoutcraftapi.gui.InGameHUD;
 import org.spoutcraft.spoutcraftapi.gui.WidgetAnchor;
 
-import com.danstoncube.poker.enums.CardEnum;
 import com.danstoncube.poker.addon.Poker;
-import com.danstoncube.poker.addon.gui.widgets.CardWidget;
-import com.danstoncube.poker.addon.gui.widgets.testLabel;
+import com.danstoncube.poker.addon.gui.widgets.FlopWidget;
 
 
-public class PokerPlayerGui
+public class PokerPlayerGui extends GenericPopup
 {
 	public PokerPlayerGui() 
 	{
+		InGameHUD screen = Spoutcraft.getActivePlayer().getMainScreen();
+			
+		GenericLabel label = new GenericLabel("TEST !");
+		FlopWidget flopWidget = new FlopWidget();
 		
-		CardWidget flopCard1 = new CardWidget(CardEnum.AS_SPADES);
-		CardWidget flopCard2 = new CardWidget(CardEnum.KING_HEARTS);
-		CardWidget flopCard3 = new CardWidget(CardEnum.FIVE_CLUBS);
 		
-		Container testContainer = new GenericContainer();
+		//Vertical container that contain "flop" container and a label 
+		Container testVerticalContainer = new GenericContainer();
 		
-		Spoutcraft.getLogger().info("container: " + testContainer);
-		
-		testContainer.setAnchor(WidgetAnchor.TOP_LEFT);
-		testContainer.setLayout(ContainerType.HORIZONTAL);
-		
+		testVerticalContainer.setWidth((int) flopWidget.getWidth());
+		testVerticalContainer.setHeight((int) screen.getHeight());		
+		testVerticalContainer.setX(0);
+		testVerticalContainer.setY(0);	
+		testVerticalContainer.setAnchor(WidgetAnchor.TOP_LEFT);
+		testVerticalContainer.setLayout(ContainerType.VERTICAL);
 
-		/* add a test label */
-		
-		testLabel label = new testLabel("TEST !");	
-		
-		/* add a test texture */
-		
-		//GenericTexture testTexture = new GenericTexture(CardWidget.textureUrl);
-		
-		//testTexture.setWidth(20).setHeight(20).setX(20).setY(20);
-		
-		
-		//add children
-		testContainer.addChildren(label, flopCard1,flopCard2,flopCard3);
+		testVerticalContainer.addChildren(label, flopWidget);
 
-	 	
-		Spoutcraft.getActivePlayer().getMainScreen().attachWidget(Poker.getAddon(), testContainer);
-	
-		//Label ok, but unable to see anything about generictextures, and so my cardwidgets wich extends it... :(
+		this.setTransparent(false);
+		
+		//Method1: attach container to screen : work fines ! 
+		screen.attachWidget(Poker.getInstance(), testVerticalContainer);
+		
+		//Method2: attach container to genericpopup and genericpopup to screen : not working, containers broken
+		//this.attachWidget(Poker.getInstance(), testVerticalContainer);
+		//screen.attachPopupScreen(this);
 	}
-
-	
 }
 

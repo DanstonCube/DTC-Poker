@@ -5,6 +5,7 @@ import com.danstoncube.poker.game.PokerGameListener;
 import com.danstoncube.poker.game.PokerHand;
 import com.danstoncube.poker.game.PokerPlayer;
 import com.danstoncube.poker.game.PokerStep;
+import com.danstoncube.poker.plugin.Poker;
 import com.danstoncube.poker.plugin.packets.PlayerActionPacket;
 
 public class GameListener  implements PokerGameListener
@@ -35,6 +36,8 @@ public class GameListener  implements PokerGameListener
 	public void onGameCreated()
 	{
 		// TODO Auto-generated method stub
+		
+		
 		
 	}
 	
