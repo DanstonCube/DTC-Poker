@@ -11,16 +11,32 @@ import org.spoutcraft.spoutcraftapi.gui.WidgetAnchor;
 
 import com.danstoncube.poker.addon.Poker;
 import com.danstoncube.poker.addon.gui.widgets.FlopWidget;
+import com.danstoncube.poker.addon.gui.widgets.PlayerWidget;
+import com.danstoncube.poker.game.PokerPlayer;
 
 
 public class PokerPlayerGui extends GenericPopup
 {
 	public PokerPlayerGui() 
 	{
+		super();
+		
 		InGameHUD screen = Spoutcraft.getActivePlayer().getMainScreen();
 			
 		GenericLabel label = new GenericLabel("TEST !");
 		FlopWidget flopWidget = new FlopWidget();
+		
+		
+		PokerPlayer testPlayer1 = new PokerPlayer("TOTO");
+		testPlayer1.setDealer(true);
+		testPlayer1.setChips(1500.0);
+		
+		PokerPlayer testPlayer2 = new PokerPlayer("TITI");
+		testPlayer2.setChips(1300.0);
+		
+		
+		PlayerWidget playerWidget1 = new PlayerWidget(testPlayer1);
+		PlayerWidget playerWidget2 = new PlayerWidget(testPlayer2);
 		
 		
 		//Vertical container that contain "flop" container and a label 
@@ -33,7 +49,7 @@ public class PokerPlayerGui extends GenericPopup
 		testVerticalContainer.setAnchor(WidgetAnchor.TOP_LEFT);
 		testVerticalContainer.setLayout(ContainerType.VERTICAL);
 
-		testVerticalContainer.addChildren(label, flopWidget);
+		testVerticalContainer.addChildren(label, flopWidget,playerWidget1,playerWidget2);
 
 		this.setTransparent(false);
 		
