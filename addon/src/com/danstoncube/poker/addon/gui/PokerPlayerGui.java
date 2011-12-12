@@ -24,9 +24,12 @@ public class PokerPlayerGui extends GenericPopup
 		InGameHUD screen = Spoutcraft.getActivePlayer().getMainScreen();
 			
 		GenericLabel label = new GenericLabel("TEST !");
+		
+		//Flop widget contain 5 Cardwidget, horizontal layout
 		FlopWidget flopWidget = new FlopWidget();
 		
 		
+		/* Test players */
 		PokerPlayer testPlayer1 = new PokerPlayer("TOTO");
 		testPlayer1.setDealer(true);
 		testPlayer1.setChips(1500.0);
@@ -35,11 +38,12 @@ public class PokerPlayerGui extends GenericPopup
 		testPlayer2.setChips(1300.0);
 		
 		
+		//Player widget contain avatar, player cards, chips, lastaction, conditionnal layout
 		PlayerWidget playerWidget1 = new PlayerWidget(testPlayer1);
 		PlayerWidget playerWidget2 = new PlayerWidget(testPlayer2);
 		
 		
-		//Vertical container that contain "flop" container and a label 
+		//Vertical container that contain a label, "flop" container, players widgets, vertical layout
 		Container testVerticalContainer = new GenericContainer();
 		
 		testVerticalContainer.setWidth((int) flopWidget.getWidth());

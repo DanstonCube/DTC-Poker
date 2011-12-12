@@ -83,7 +83,15 @@ public class PlayerWidget extends GenericContainer
 		textureAvatar.setHeight(2 * coefHeight);		
 		textureAvatar.setPriority(RenderPriority.Lowest);
 		textureAvatar.shiftYPos(3 * coefWidth);
+		
+		
+		
 		//layer2
+		
+		
+		
+		
+		
 		
 		//layer3
 		
