@@ -19,5 +19,3 @@ Pour debugguer (sous eclipse)
 Dans eclipse, faire une nouvelle config de debuggage,
  
 point d'entree: org.bukkit.craftbukkit.Main
-
-
